@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .search {
+            position: relative;
+            width: 178px;
+            margin: 100px;
+        }
+
+        .con {
+            display: none;
+            position: absolute;
+            top: -40px;
+            width: 171px;
+            border: 1px solid rgba(0, 0, 0, .2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+            padding: 5px 0;
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+        }
+
+        .con::before {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 28px;
+            left: 18px;
+            border: 8px solid #000;
+            border-style: solid dashed dashed;
+            border-color: #fff transparent transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        <div class="con"></div>
+        <input type="text" placeholder="请输入您的快递单号" class="jd">
+    </div>
+
+    <script>
+
+        // 要求:
+        // 1. 获取焦点时候,如果.con含有标签内容,显示.con层
+        // 2. 失去焦点时候,隐藏.con层
+        // 3. 在文本框输入内容的时候,文本框的内容需要同步到.con层的标签内容中  
+        // 4. 文本框中有输入的内容,还需要显示.con层
+
+        var con = document.querySelector(".con");
+        var jd = document.querySelector(".jd");
+        jd.onfocus = function () {
+            con.style.display = "block"
+
+        }
+        jd.onblur = function () {
+            con.style.display = "none"
+        }
+        jd.onkeyup = function () {
+            var jdValue = jd.value;
+            con.innerText = jdValue;
+            if (con.length > 0) {
+                con.style.display = "block";
+            } else {
+                con.style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

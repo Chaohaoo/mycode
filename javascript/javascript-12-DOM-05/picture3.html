@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: skyblue;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 100px;
+            top: 50px;
+            cursor: move;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        var div = document.querySelector("div");
+        div.onmousedown = function (e) {
+            var stratX = e.offsetX;
+            var stratY = e.offsetY;
+            document.onmousemove = function (event) {
+                var moveX = event.clientX;
+                var moveY = event.clientY;
+                var x = moveX - stratX;
+                var y = moveY - stratY;
+                div.style.left = x + "px";
+                div.style.top = y + "px";
+            }
+        }
+        div.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    </script>
+</body>
+
+</html>

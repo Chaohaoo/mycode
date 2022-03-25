@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function Coffee(roast, ounces) {
+            this.roast = roast;
+            this.ounces = ounces;
+        }
+
+        Coffee.prototype.getSize = function () {
+            if (this.ounces === 8) {
+                this.size = "small";
+            } else if (this.ounces === 12) {
+                this.size = "medium";
+            } else if (this.ounces === 16) {
+                this.size = "large";
+            }
+        }
+
+        Coffee.prototype.toString = function () {
+            this.getSize();
+            console.log(" You've ordered a " + this.size + " " + this.roast + " coffee. ")
+        }
+
+        var houseBlend = new Coffee("House Blend", 12);
+        houseBlend.toString();
+
+
+        var darkRoast = new Coffee("Dark Roast", 16);
+        darkRoast.toString();
+
+
+    </script>
+</body>
+
+</html>

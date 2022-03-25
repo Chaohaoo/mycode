@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            margin: 100px auto;
+            border-radius: 50%;
+            background: linear-gradient(30deg, black 50%, white 50%);
+            border: 1px solid #000;
+            animation: donghua 3s linear 0s infinite;
+        }
+
+        div:before,
+        div:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 14%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 90px solid transparent;
+        }
+
+        div::before {
+            left: 11px;
+            border-color: #fff;
+            background-color: #000;
+        }
+
+        div::after {
+            right: 9px;
+            top: 36%;
+            border-color: #000;
+            background-color: #fff;
+        }
+
+        @keyframes donghua {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

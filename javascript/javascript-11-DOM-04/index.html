@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div {
+            width: 150px;
+            height: 150px;
+        }
+
+        #div1 {
+            background: red;
+        }
+
+        #div2 {
+            background: green;
+        }
+
+        #div3 {
+            background: blue;
+        }
+
+        #div4 {
+            background: purple;
+        }
+
+        #div5 {
+            background: aqua;
+        } */
+
+        /* #myP {
+            width: 150px;
+            height: 150px;
+            background: orange;
+        }
+
+        ul {
+            background: pink;
+        }
+
+        ul li {
+            background: skyblue;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- <div id="div1">div1</div>
+    <div id="div2">div2</div>
+
+    <p id="myP">p段落</p> -->
+
+    <!-- <ul>
+        <li>苹果</li>
+        <li>西瓜</li>
+        <li>冬瓜</li>
+        <li>南瓜</li>
+        <li>北瓜</li>
+        <li>哈密瓜</li>
+        <li>香瓜</li>
+        <li>丝瓜</li>
+    </ul>
+
+    <button>新增li元素</button> -->
+
+    <a href="https://www.baidu.com" id="mylink">百度</a>
+
+    <form action="index.php" method="get">
+        <p>年龄: <input type="text" id="myAge" /></p>
+        <p><input type="submit" value="提交数据" id="myBtn"> </p>
+    </form>
+
+    <script>
+        /* var div1 = document.getElementById("div1");
+        var div2 = document.getElementById("div2");
+        div1.onclick = function (e) {
+            // e = e || window.event;
+            if (e) {
+                e = e;
+            } else {
+                e = window.event;
+            }
+            console.log(e);
+
+            console.log("div1的onclick点击事件");
+        }
+        div2.onclick = function (e) {
+            e = e || window.event;
+            console.log(this);
+            console.log(e.target);
+        } */
+
+        /* var objUL = document.querySelector("ul");
+        objUL.onclick = function (e) {
+            e = e || window.event;
+            // console.log(e.target);
+            // console.log(e.target.nodeName);
+            if (e.target.nodeName == "LI") {
+                e.target.style.background = "green";
+            }
+        }
+        var btns = document.querySelector("button");
+        btns.onclick = function () {
+            var newLi = document.createElement("li");
+            newLi.innerHTML = "黄瓜";
+            objUL.appendChild(newLi);
+        } */
+
+        var myLink = document.getElementById("mylink");
+        myLink.onclick = function (e) {
+            e = e || window.event;
+            // 阻止默认行为
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            alert("百度一下");
+
+            // return false;
+
+        }
+    </script>
+
+</body>
+
+</html>

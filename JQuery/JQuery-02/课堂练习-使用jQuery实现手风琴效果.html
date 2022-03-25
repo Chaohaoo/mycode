@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .main {
+            width: 1200px;
+            height: 260px;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+
+        .main ul {
+            display: flex;
+        }
+
+        .main ul li {
+            width: 200px;
+            height: 260px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .main ul li div {
+            width: 100%;
+            height: 260px;
+        }
+
+        .main ul li div.desc {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, .3);
+        }
+
+        .main ul li div.desc h4 {
+            color: #FFF;
+            font-size: 30px;
+            padding: 30px;
+            width: 30px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <ul>
+            <li>
+                <div class="desc">
+                    <h4>园林酒店</h4>
+                </div>
+                <div style="background: url(images/01.jpg) center;"></div>
+            </li>
+            <li>
+                <div class="desc">
+                    <h4>设计师酒店</h4>
+                </div>
+                <div style="background: url(images/02.jpg) center;"></div>
+            </li>
+            <li>
+                <div class="desc">
+                    <h4>青年旅社</h4>
+                </div>
+                <div style="background: url(images/03.jpg) center;"></div>
+            </li>
+            <li>
+                <div class="desc">
+                    <h4>特色客栈</h4>
+                </div>
+                <div style="background: url(images/04.jpg) center;"></div>
+            </li>
+            <li>
+                <div class="desc">
+                    <h4>海岛酒店</h4>
+                </div>
+                <div style="background: url(images/05.jpg) center;"></div>
+            </li>
+            <li>
+                <div class="desc">
+                    <h4>海外温泉</h4>
+                </div>
+                <div style="background: url(images/06.jpg) center;"></div>
+            </li>
+        </ul>
+    </div>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        /* 思路
+        1)鼠标移入
+            1>宽度改为400,其他它改成160
+            2>隐藏文字
+        2)鼠标移出
+            1>显示文字
+            2>宽度改为200
+        */
+        $("ul li").mouseover(function () {
+            $(this).stop().animate({ "width": "400" }).siblings().stop().animate({ "width": "160" });
+            $(this).children(".desc").hide();
+        });
+        $("ul li").mouseout(function () {
+            $("ul li").stop().animate({ "width": "200" });
+            $(this).children(".desc").show();
+        });
+    </script>
+</body>
+
+</html>

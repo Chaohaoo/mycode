@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一次触发,最后不会被调用触发函数</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: green;
+            text-align: center;
+            line-height: 200px;
+            font-size: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">1</div>
+    <script>
+        let box = document.querySelector(".box");
+        let num = 1;
+
+        function changeNum(e) {
+            num++;
+            box.innerText = num;
+        };
+
+        function throttle(func, wait) {
+            let that = null;
+            let args = null;
+            let old = 0;
+
+            return function () {
+                that = this;
+                args = arguments;
+                let now = new Date().getTime();
+                if (now - old > wait) {
+                    func.apply(that, args);
+                    old = now;
+                }
+            }
+        };
+
+        box.onmousemove = throttle(changeNum, 2000);
+    </script>
+</body>
+
+</html>

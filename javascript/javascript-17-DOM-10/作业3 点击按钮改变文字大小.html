@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击按钮,段落内容字体大小变成20px</button>
+    <button>点击按钮,段落内容字体大小变成40px</button>
+    <button>点击按钮,段落内容字体大小变成60px</button>
+    <p>我是段落内容</p>
+
+    <script>
+        var objP = document.querySelector("p");
+        var btns = document.querySelectorAll("button");
+
+        function change(size) {
+            return function () {
+                objP.style.fontSize = size + "px";
+            }
+        }
+        for (var i = 0; i < btns.length; i++) {
+            var size = 0;
+            (function (i) {
+                size = i * 20 + 20;
+                btns[i].onclick = change(size);
+            })(i);
+        }
+    </script>
+</body>
+
+</html>

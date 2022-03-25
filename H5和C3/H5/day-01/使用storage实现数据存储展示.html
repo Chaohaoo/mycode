@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            position: absolute;
+            top: 50px;
+            left: 300px;
+            width: 100px;
+            text-align: center;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        key:
+        <input type="text" placeholder="请输入键名" id="key">
+    </p>
+    <p>
+        value:
+        <input type="text" placeholder="请输入键值" id="value">
+    </p>
+    <button id="add">add</button>
+    <button id="clear">clear</button>
+    <p>这里有 <span class="count">0</span> 个items</p>
+    <table border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        <tbody>
+            <!-- <tr>
+                <td colspan="2">暂无数据</td>
+            </tr> -->
+        </tbody>
+        </thead>
+    </table>
+
+    <script>
+        let key = document.querySelector("#key");
+        let value = document.querySelector("#value");
+        let addBtn = document.querySelector("#add");
+        let clearBtn = document.querySelector("#clear");
+        let tbody = document.querySelector("tbody");
+        let count = document.querySelector(".count");
+
+        function renderDate() {
+            let htmlStr = ``;
+            let length = localStorage.length;
+            if (length === 0) {
+                htmlStr = `
+                    <tr>
+                        <td colspan="2">暂无数据</td>
+                    </tr>`;
+            } else {
+                for (let i = 0; i < length; i++) {
+                    let keyName = localStorage.key(i);
+                    let keyValue = localStorage.getItem(keyName);
+                    htmlStr += `
+                        <tr>
+                            <td>${keyName}</td>
+                            <td>${keyValue}</td>
+                        </tr>
+                        `;
+                }
+            }
+            tbody.innerHTML = htmlStr;
+            count.innerText = localStorage.length;
+        };
+
+        renderDate();
+
+        addBtn.onclick = function () {
+            let keyInputVal = key.value;
+            let valInputVal = value.value;
+
+            if (keyInputVal == "" || valInputVal == "") {
+                alert("请输入内容再添加");
+                return
+            }
+            localStorage.setItem(keyInputVal, valInputVal);
+            key.value = "";
+            value.value = "";
+            renderDate();
+        };
+
+        clearBtn.onclick = function () {
+            localStorage.clear();
+            renderDate();
+        }
+
+
+    </script>
+</body>
+
+</html>

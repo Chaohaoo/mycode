@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .clearfix {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .content {
+            width: 1250px;
+            margin: 50px auto;
+        }
+
+        .middle_box {
+            width: 450px;
+            height: 450px;
+            position: relative;
+        }
+
+        .middle_box img {
+            width: 450px;
+            height: 450px;
+            display: none;
+        }
+
+        .middle_box .active {
+            display: block;
+        }
+
+        .middle_box .fdj {
+            width: 150px;
+            height: 150px;
+            background-color: #FEEEA7;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            display: none;
+        }
+
+        .small_box {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .small_box ul li {
+            float: left;
+            margin-right: 24px;
+        }
+
+        .small_box ul li:last-child {
+            margin-right: 0;
+        }
+
+        .small_box ul li .active {
+            border: 1px solid red;
+        }
+
+        .big_box {
+            width: 550px;
+            height: 550px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+
+        .big_box img {
+            display: none;
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .big_box .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content clearfix">
+        <div class="box fl">
+            <div class="middle_box">
+                <img class="active" src="images-jd/1_middle.jpg" alt="">
+                <img src="images-jd/2_middle.jpg" alt="">
+                <img src="images-jd/3_middle.jpg" alt="">
+                <img src="images-jd/4_middle.jpg" alt="">
+                <img src="images-jd/5_middle.jpg" alt="">
+                <img src="images-jd/6_middle.jpg" alt="">
+                <div class="fdj"></div>
+            </div>
+            <div class="small_box">
+                <ul class="clearfix">
+                    <li><img class="active" src="images-jd/1_small.jpg" alt=""></li>
+                    <li><img src="images-jd/2_small.jpg" alt=""></li>
+                    <li><img src="images-jd/3_small.jpg" alt=""></li>
+                    <li><img src="images-jd/4_small.jpg" alt=""></li>
+                    <li><img src="images-jd/5_small.jpg" alt=""></li>
+                    <li><img src="images-jd/6_small.jpg" alt=""></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="big_box fl">
+            <img class="active" src="images-jd/1_big.jpg" alt="">
+            <img src="images-jd/2_big.jpg" alt="">
+            <img src="images-jd/3_big.jpg" alt="">
+            <img src="images-jd/4_big.jpg" alt="">
+            <img src="images-jd/5_big.jpg" alt="">
+            <img src="images-jd/6_big.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        var middleBox = document.querySelector(".middle_box");
+        var middleImg = document.querySelectorAll(".middle_box img");
+        var objFdj = document.querySelector(".middle_box .fdj");
+        var smallImg = document.querySelectorAll(".small_box ul li img");
+        var bigImg = document.querySelectorAll(".big_box img");
+        var bigBox = document.querySelector(".big_box");
+
+        for (var i = 0; i < smallImg.length; i++) {
+            smallImg[i].dataset.index = i;
+            smallImg[i].onmouseenter = function () {
+                for (var j = 0; j < smallImg.length; j++) {
+                    smallImg[j].classList.remove("active");
+                    middleImg[j].classList.remove("active");
+                    bigImg[j].classList.remove("active");
+                }
+                this.classList.add("active");
+                var index = this.dataset.index;
+                middleImg[index].classList.add("active");
+                bigImg[index].classList.add("active");
+            }
+        }
+        middleBox.onmouseenter = function () {
+            objFdj.style.display = "block";
+            bigBox.style.display = "block";
+        }
+        middleBox.onmouseleave = function () {
+            objFdj.style.display = "none";
+            bigBox.style.display = "none";
+        }
+
+        middleBox.onmousemove = function (e) {
+            var x = e.clientX;
+            var y = e.clientY;
+            x = e.clientX - middleBox.offsetLeft;
+            y = e.clientY - middleBox.offsetTop;
+
+            x = x - objFdj.offsetWidth / 2;
+            y = y - objFdj.offsetHeight / 2;
+            if (x < 0) {
+                x = 0
+            }
+            if (y < 0) {
+                y = 0
+            }
+            var FdjMove = middleBox.offsetWidth - objFdj.offsetWidth;
+
+            var bigImgMove = bigImg[0].offsetWidth - bigBox.offsetWidth;
+            if (x > FdjMove) {
+                x = FdjMove;
+            }
+            if (y > FdjMove) {
+                y = FdjMove;
+            }
+
+            objFdj.style.left = x + "px";
+            objFdj.style.top = y + "px";
+
+            var x2 = -(bigImgMove * (x / FdjMove));
+            var y2 = -(bigImgMove * (y / FdjMove));
+            for (var i = 0; i < bigImg.length; i++) {
+                if (i == 0) {
+                    bigImg[i].style.left = x2 + "px";
+                    bigImg[i].style.top = y2 + "px";
+                } else {
+                    bigImg[i].style.left = -x2 + "px";
+                    bigImg[i].style.top = -y2 + "px";
+                }
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>

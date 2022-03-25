@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/reset.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="top_nav">
+            <ul class="top_list">
+                <li class="active">最佳搭档</li>
+                <li>压制英雄</li>
+                <li>被压制英雄</li>
+            </ul>
+        </div>
+        <div class="top_content">
+            <h3>最佳搭档</h3>
+            <img class="active" src="./images/huangzhong.jpg" alt="">
+            <img src="./images/gaojianli.jpg" alt="">
+            <p class="active_p">
+                黄忠：这两个英雄在一起玩的就是速推流。刘禅的被动和一二技能的干扰，加上大招对塔的高额伤害，配上黄忠的炮台，能够以极短的时间推掉一座防御塔。并且刘禅的一二技能控制时间较长，能够很好的保护好黄忠，敌人在黄忠的大招圈内越久受到的伤害越高。
+            </p>
+            <p>
+                高渐离：刘禅和高渐离可以产生很好的联动，刘禅的控制技能比较多，在用一技能配合二技能时不光可以开团，也可以干扰防御塔无法攻击，高渐离可以直接大招进场，释放出高额的爆发输出击杀对方英雄，是正面开团和越塔强杀的利器。
+            </p>
+        </div>
+
+        <div class="bottom_box">
+            <div class="bottom_nav">
+                <ul>
+                    <li class="active">推荐出装一</li>
+                    <li>推荐出装二</li>
+                </ul>
+            </div>
+            <div class="bottom_photo">
+                <div class="photo_box">
+                    <img src="./images/photo1.jpg" alt="救赎之翼">
+                </div>
+                <div class="photo_box">
+                    <img src="./images/photo2.jpg" alt="救赎之翼">
+                </div>
+                <div class="photo_box">
+                    <img src="./images/photo3.jpg" alt="救赎之翼">
+                </div>
+                <div class="photo_box">
+                    <img src="./images/photo4.jpg" alt="救赎之翼">
+                </div>
+                <div class="photo_box">
+                    <img src="./images/photo5.jpg" alt="救赎之翼">
+                </div>
+                <div class="photo_box">
+                    <img src="./images/photo6.jpg" alt="救赎之翼">
+                </div>
+
+            </div>
+            <div class="bottom_tips">
+                <p>Tips：刘禅通常会与敌人贴身肉搏，极寒风暴能提供高额的冷却缩减并且让刘禅的生存得到提升，还能造成伤害制造威胁让对手进退两难</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var topList = document.querySelectorAll(".top_list li");
+        var topImg = document.querySelectorAll(".top_content img")
+        var topP = document.querySelectorAll(".top_content p");
+
+        for (var i = 0; i < topList.length; i++) {
+            topList[i].onmousemove = function () {
+                for (var j = 0; j < topList.length; j++) {
+                    topList[j].classList.remove("active");
+                }
+                this.classList.add("active");
+                topImg.scr = "./images/huangzhong.jpg";
+            }
+        }
+
+        for (var i = 0; i < topImg.length; i++) {
+            topImg[i].onmousemove = function () {
+                for (var j = 0; j < topImg.length; j++) {
+                    topImg[j].classList.remove("active");
+                    topP[j].classList.remove("active_p");
+                }
+                this.classList.add("active");
+                this.nextElementSibling.nextElementSibling.classList.add("active_p");
+            }
+        }
+    </script>
+</body>
+
+</html>

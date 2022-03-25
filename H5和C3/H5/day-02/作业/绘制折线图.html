@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+        var data = [
+            { x: 100, y: 120 },
+            { x: 200, y: 160 },
+            { x: 300, y: 240 },
+            { x: 400, y: 320 },
+            { x: 500, y: 80 }
+        ];
+
+
+        let canvas = document.querySelector("canvas");
+        let ctx = canvas.getContext("2d");
+
+        //画网格
+
+        let gridSize = 10;
+        let xLineSum = Math.floor(canvas.height / gridSize);
+        let yLineSum = Math.floor(canvas.width / gridSize);
+
+        for (let i = 0; i <= xLineSum; i++) {
+            ctx.beginPath();
+            ctx.moveTo(0, i * gridSize);
+            ctx.lineTo(canvas.width, i * gridSize);
+            ctx.strokeStyle = "#eee";
+            ctx.stroke();
+        }
+
+        for (let i = 0; i <= yLineSum; i++) {
+            ctx.beginPath();
+            ctx.moveTo(i * gridSize, 0);
+            ctx.lineTo(i * gridSize, canvas.height);
+            ctx.strokeStyle = "#eee";
+            ctx.stroke();
+        }
+
+        //画坐标系
+        // y 轴
+        ctx.beginPath();
+        ctx.moveTo(20, canvas.height - 20);
+        ctx.lineTo(20, 30);
+        ctx.strokeStyle = "#000";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(20, 20);
+        ctx.lineTo(15, 30);
+        ctx.lineTo(25, 30);
+        ctx.closePath();
+        ctx.fill();
+
+        //x 轴
+        ctx.beginPath();
+        ctx.moveTo(20, canvas.height - 20);
+        ctx.lineTo(canvas.width - 30, canvas.height - 20);
+        ctx.strokeStyle = "#000";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(canvas.width - 20, canvas.height - 20);
+        ctx.lineTo(canvas.width - 30, canvas.height - 15);
+        ctx.lineTo(canvas.width - 30, canvas.height - 25);
+        ctx.closePath();
+        ctx.fill();
+
+        //渲染数据
+        let dotsize = 10;
+
+        data.forEach(function (item, index) {
+            ctx.beginPath();
+            ctx.moveTo(item.x - 20 - dotsize / 2, canvas.height - item.y - 20 + dotsize / 2);
+            ctx.lineTo(item.x - 20 + dotsize / 2, canvas.height - item.y - 20 + dotsize / 2);
+            ctx.lineTo(item.x - 20 + dotsize / 2, canvas.height - item.y - 20 - dotsize / 2);
+            ctx.lineTo(item.x - 20 - dotsize / 2, canvas.height - item.y - 20 - dotsize / 2);
+            ctx.closePath()
+            ctx.strokeStyle = "#000";
+            ctx.fill();
+
+            let canvasX = item.x - 20;
+            let canvasY = canvas.height - item.y - 20;
+
+            if (index == 0) {
+                ctx.beginPath();
+                ctx.moveTo(20, canvas.height - 20);
+                ctx.lineTo(canvasX, canvasY);
+                ctx.stroke();
+            } else {
+                let prevCanvasX = data[index - 1].x - 20;
+                let prevCanvasY = canvas.height - data[index - 1].y - 20;
+                ctx.beginPath();
+                ctx.moveTo(prevCanvasX, prevCanvasY);
+                ctx.lineTo(canvasX, canvasY);
+                ctx.stroke();
+            }
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

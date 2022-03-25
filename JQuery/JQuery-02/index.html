@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <span>span1</span>
+    <span>span2</span>
+    <span>span3</span>
+    <span>span4</span>
+    <span>span5</span>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        // 1. 我们遍历数组可以使用 for 、 for...in 、 forEach
+        // 2. 我们遍历自定义对象可以使用 for...in
+        // 3. 我们遍历jQuery对象可以使用 jQuery对象.each()
+
+        //  $.each()方法 主要用于遍历数据(遍历数组或者对象或者jQuery对象),处理数据 
+
+        // 语法
+        /* 
+        $.each( 数组或者自定义对象或者jQuery对象, function( index, item ){
+
+        })
+        */
+
+        // 遍历数组
+        var arr = [5, 7, 9, 56, 32, 15];
+        $.each(arr, function (index, item) {
+            console.log(index, item);
+        });
+        console.log("");
+        console.log("");
+
+        // 遍历自定义对象
+        var obj = {
+            id: 5,
+            name: "zhangsan",
+            age: 23,
+            sex: "男"
+        };
+        $.each(obj, function (index, item) {
+            console.log(index, item);
+        });
+        console.log("");
+        console.log("");
+        console.log("");
+
+        // 遍历jQuery对象newLi
+        $.each($("span"), function (index, item) {
+            console.log(index, $(item));
+        });
+    </script>
+</body>
+
+</html>

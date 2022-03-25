@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        var arr =  [ [11,8,35],[7,51,99] ];
+        var sum = 0;
+        var cun = 0;
+        for(var i = 0; i < 2;i++){
+            for(var j = 0; j < 3; j++){
+                if(arr[i][j] %  2 != 0){
+                    sum +=arr[i][j];
+                    cun++;
+                }
+            }
+        }
+        console.log('所有奇数和:' + sum,'奇数个数为:' + cun);
+       
+                         
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

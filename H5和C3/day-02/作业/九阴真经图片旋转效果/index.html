@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .fanther {
+            width: 1100px;
+            margin: 200px auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .fanther .son {
+            width: 200px;
+            height: 380px;
+            position: relative;
+        }
+
+        .fanther .son:nth-child(odd) {
+            margin-top: -40px;
+        }
+
+        .fanther .son .img1 {
+            position: absolute;
+            transition: 1s;
+            z-index: 1;
+
+        }
+
+        .fanther .son .img2 {
+            transition: 1s;
+            position: absolute;
+
+            transform: rotateY(180deg);
+        }
+
+        .fanther .son:hover .img1 {
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+
+        }
+
+        .fanther .son:hover .img2 {
+            transform: rotateY(0deg);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fanther">
+        <div class="son">
+            <img src="./images/card1.png" class="img1">
+            <img src="./images/card1-back.png" class="img2">
+        </div>
+        <div class="son">
+            <img src="./images/card2.png" class="img1">
+            <img src="./images/card2-back.png " class="img2">
+        </div>
+        <div class="son">
+            <img src="./images/card3.png" class="img1">
+            <img src="./images/card3-back.png" class="img2">
+        </div>
+        <div class="son">
+            <img src="./images/card4.png" class="img1">
+            <img src="./images/card4-back.png" class="img2">
+        </div>
+        <div class="son">
+            <img src="./images/card5.png" class="img1">
+            <img src="./images/card5-back.png" class="img2">
+        </div>
+    </div>
+</body>
+
+</html>

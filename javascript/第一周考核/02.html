@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            text-align: center;
+        }
+    </style>
+    <script>
+        var str = "李白&刺客&侠客行&将进酒&神来之笔&青莲剑歌@孙悟空&刺客&大圣神威&护身咒法&斗战冲锋&如意金箍@鲁班&射手&火力压制&河豚手雷&无敌鲨嘴炮&空中支援@小乔&法师&治愈微笑&绽放之舞&甜蜜恋风&星华缭乱@周瑜&法师&引燃&不死鸟之炎&七月流火&烽火赤壁";
+        var arr1 = str.split('@');
+        var arr2 = [];
+        for( var m = 0; m < arr1.length; m++){
+            arr2 [arr2.length] = arr1[m].split('&');
+        }
+        console.log(arr2);
+        var str = '<table border="1" width="500" rules="all">';
+            str += '<tr>';
+            str += '<th>英雄</th>';
+            str += '<th>定位</th>';
+            str += '<th>技能1</th>';
+            str += '<th>技能2</th>';
+            str += '<th>技能3</th>';
+            str += '<th>技能4</th>';
+            str += '</tr>';
+            for(var i = 1; i <= 5; i++){
+                str += '<tr>';
+                for(var j = 1; j <= 6; j++){
+                    str += '<td>' + arr2[i - 1][j - 1] + '</td>';
+                }
+                str += '</tr>';
+            }
+        str += '</table>';
+        document.write(str);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

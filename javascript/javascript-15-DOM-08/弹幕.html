@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        input {
+            border: none;
+            outline: none;
+        }
+
+        img {
+            vertical-align: bottom;
+        }
+
+        .wrapBox {
+            width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 0 8px #e5e9ef;
+        }
+
+        .wrapBox .videoBox {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wrapBox .videoBox span {
+            color: #f00;
+            font-size: 20px;
+            position: absolute;
+            left: 800px;
+            top: 0;
+            white-space: nowrap;
+        }
+
+        .wrapBox>.videoBox>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wrapBox .danmuSend {
+            height: 40px;
+            padding: 10px 12px 0 20px;
+            position: relative;
+        }
+
+        .wrapBox .danmuSend #content {
+            background: #f4f4f4;
+            border: 1px solid #e7e7e7;
+            text-indent: 1em;
+            height: 28px;
+            width: 700px;
+            float: left;
+        }
+
+        .wrapBox .danmuSend #send {
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: #00a1d6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            float: left;
+        }
+
+        .wrapBox .danmuSend #send:hover {
+            background: #00b5e5;
+        }
+
+        .wrapBox .danmuSend #face_btn {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: 79px;
+            top: 50%;
+            padding: 5px;
+            transform: translateY(-50%);
+        }
+
+        .wrapBox .danmuSend .panel {
+            width: 390px;
+            height: 120px;
+            padding: 2px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            position: absolute;
+            right: 0;
+            bottom: 40px;
+            display: none;
+        }
+
+        .wrapBox .danmuSend .panel .list li {
+            float: left;
+            margin-right: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapBox">
+        <!-- 上部分 背景图-->
+        <div class="videoBox">
+            <img src="images/bg.jpg">
+            <!-- <span class="danmu">我是弹幕111</span> -->
+        </div>
+
+        <!-- 下部分 发送弹幕 -->
+        <div class="danmuSend">
+            <input type="text" id="content" placeholder="发个弹幕见证当下">
+            <div class="panel">
+                <ul class="list">
+                    <!-- <li><img src="images/1.gif"></li>
+                    <li><img src="images/1.gif"></li> -->
+                </ul>
+            </div>
+            <img src="images/biaoqing.png" id="face_btn" />
+            <button id="send">发送</button>
+        </div>
+    </div>
+    <script src="../javascript-15-DOM-08/animate.js"></script>
+    <script>
+        function $(cssSelector) {
+            var dom = document.querySelectorAll(cssSelector);
+            if (dom.length === 0) {
+                return null;
+            }
+            if (dom.length === 1) {
+                return dom[0];
+            }
+            return dom;
+        }
+
+        var objInput = document.getElementById("content");
+        var bnt = document.getElementById("send");
+        var span = $(".videoBox span");
+        var videoBox = $(".videoBox");
+        var expressionBtn = document.getElementById("face_btn");
+        var panel = $(".panel");
+        var objUl = $(".panel .list");
+
+        objInput.onkeydown = function (e) {
+            e = e || window.event;
+            if (e.which === 13) {
+                danMu();
+            }
+        }
+
+        function danMu() {
+            var str = objInput.value;
+            var newSpan = document.createElement("span");
+
+            videoBox.appendChild(newSpan);
+            newSpan.innerHTML = replace_em(str);
+
+            var videoBoxWidth = parseInt(getStyle(videoBox, "width")) + 1;
+
+            newSpan.style.top = Math.ceil(Math.random() * 500) + "px";
+
+            var newSpanWidt = parseInt(getStyle(newSpan, "width"));
+
+            animate(newSpan, {
+                left: -newSpanWidt,
+            }, function () {
+                var newSpanLeft = parseInt(newSpan.style.left);
+                if (newSpanLeft <= -newSpanWidt) {
+                    newSpan.remove();
+                }
+            });
+
+            objInput.value = "";
+        }
+
+        function replace_em(str) {
+            str = str.replace(/\[em_([0-9]*)\]/g, '<img src="images/$1.gif"/>');
+            return str;
+        }
+
+        bnt.onclick = function () {
+            danMu();
+        }
+
+        var flag = true;
+        expressionBtn.onclick = function () {
+            if (flag) {
+                panel.style.display = "block";
+                flag = false;
+            } else {
+                panel.style.display = "none";
+                flag = true;
+            }
+        }
+
+        for (var i = 1; i <= 75; i++) {
+            var newLI = document.createElement("li");
+            var newImg = document.createElement("img");
+            objUl.appendChild(newLI);
+            newLI.appendChild(newImg);
+            newImg.src = "images/" + i + ".gif";
+        }
+
+        var objLI = $(".panel .list li");
+        for (var i = 0; i < objLI.length; i++) {
+            objLI[i].dataset.index = i;
+            objLI[i].onclick = function () {
+                var index = this.dataset.index;
+                var str = "[em_" + index + "]";
+                objInput.value += str;
+
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>

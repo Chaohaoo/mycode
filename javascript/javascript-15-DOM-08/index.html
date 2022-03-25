@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #myDiv {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        #myP {
+            width: 150px;
+            height: 150px;
+            background: blue;
+        } */
+
+        span {
+            background: orange;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- <div id="myDiv">div内容</div>
+    <br />
+    <button id="btn1">手动触发div的onclick事件</button>
+
+    <p id="myP">p段落内容</p>
+    <button id="btn2">手动触发p的onclick事件</button> -->
+
+    <!-- <script>
+        var myDiv = document.getElementById("myDiv");
+        var myP = document.getElementById("myP");
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+
+        myDiv.onclick = function () {
+            this.innerHTML = "这是一个div";
+            this.style.backgroundColor = "pink";
+        }
+        btn1.onclick = function () {
+            myDiv.onclick();
+        }
+
+        myP.addEventListener("click", function () {
+            this.innerHTML = "这是一个p";
+            this.style.backgroundColor = "green";
+        });
+        btn2.onclick = function () {
+            myP.click();
+        }
+    </script> -->
+
+
+    <!-- <script>
+        var arr1 = [10, 20, 30];
+        var arr2 = arr1.concat();
+        // console.log(arr1);
+        // console.log(arr2);
+        // console.log("");
+        // arr1[0] = 1;
+        // arr2[0] = 11;
+        // console.log(arr1);
+        // console.log(arr2);
+
+        var arr2 = arr1.slice();
+        arr1[0] = 111;
+        arr2[0] = 11;
+        console.log(arr1);
+        console.log(arr2);
+
+        var obj1 = {
+            id: 1,
+            name: "zhangsan",
+            age: 21
+        }
+        var obj2 = {};
+        for (var attr in obj1) {
+            obj2[attr] = obj1[attr];
+        }
+        console.log(obj1);
+        console.log(obj2);
+        console.log("");
+        obj1.id = 2;
+        console.log(obj1);
+        console.log(obj2);
+
+        var obj3 = {
+            name: "lisi",
+            age: 30
+        }
+        var obj4 = Object.assign({}, obj3);
+        obj3.name = "wangwu";
+        obj4.age = 44;
+        console.log(obj3);
+        console.log(obj4);
+    </script> -->
+
+    <!-- <script>
+        var jsonObj = {
+            id: 1,
+            name: "zhangsan",
+            age: 21
+        }
+        console.log(jsonObj);
+        console.log(typeof jsonObj);
+        // JSON对象转成JSON字符串      
+        var jsonStr = JSON.stringify(jsonObj);
+        console.log(jsonStr);
+        console.log(typeof jsonStr);
+        // JSON字符串转成JSON对象
+        console.log(typeof JSON.parse(jsonStr));
+
+    </script> -->
+
+    <!-- <a href="https://www.jd.com">京东</a>
+    <span>百度</span>
+    <br />
+    <br />
+
+    <button>location.assign(网址)</button>
+    <button>location.replace(网址)</button>
+    <button>location.reload()</button> -->
+
+    <!-- <script>
+        var span = document.querySelector("span");
+        var bnts = document.querySelectorAll("button");
+        span.onclick = function () {
+            location.href = "https://www.baidu.com";
+        }
+        console.log(location.href);
+        bnts[0].onclick = function () {
+            location.assign("https://www.taobao.com");
+        }
+        bnts[1].onclick = function () {
+            location.replace("https://www.tmall.com");
+        }
+        bnts[2].onclick = function () {
+            location.reload();
+        }
+    </script> -->
+
+</body>
+
+</html>

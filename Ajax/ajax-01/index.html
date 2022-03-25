@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        /* 字体颜色继承父元素 */
+        color: inherit;
+    }
+
+    .heroList {
+        width: 600px;
+        margin: 50px auto;
+    }
+
+    .heroList ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .heroList ul li {
+        width: 80px;
+        text-align: center;
+        margin: 2px;
+    }
+
+    .heroList ul li img {
+        width: 80px;
+        height: 80px;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+
+    <!-- <button>获取txt文本内容</button>
+    <p></p> -->
+
+    <!-- <script>
+        var btn = document.querySelector("button");
+        var p = document.querySelector("p");
+
+        btn.onclick = function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "./a.txt");
+            xhr.send();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    p.innerHTML = xhr.responseText;
+                }
+            }
+        };
+    </script> -->
+
+    <!-- <div class="heroList">
+        <button>获取王者英雄列表</button>
+        <br />
+        <br />
+        <ul>
+            <!-- <li>
+                <a href="https://pvp.qq.com/web201605/herodetail/105.shtml">
+                    <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/105/105.jpg" />
+                    <p>廉颇</p>
+                </a>
+            </li> -->
+    <!-- </ul>
+    </div> -->
+
+    <!--  <script>
+        var btn = document.querySelector("button");
+        var ul = document.querySelector("ul");
+
+        btn.onclick = function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open("get", "./herolist.json");
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    data.reverse();
+                    var htmlStr = "";
+                    data.forEach(function (item) {
+                        htmlStr += `
+                        <li>
+                            <a href="https://pvp.qq.com/web201605/herodetail/${item.ename}.shtml">
+                                <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/${item.ename}/${item.ename}.jpg" />
+                                <p>${item.cname}</p>
+                            </a>
+                        </li>
+                        `;
+                    });
+                    ul.innerHTML = htmlStr;
+                }
+            };
+        };
+    </script> -->
+
+
+
+</body>
+
+</html>

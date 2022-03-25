@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .phone {
+            width: 250px;
+            margin: 50px auto;
+        }
+
+        .phone img {
+            height: 500px;
+            border-radius: 20px;
+            display: none;
+        }
+
+        .phone .active {
+            display: block;
+        }
+
+        .photo {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            width: 1200px;
+            margin: auto;
+            background-color: #000;
+        }
+
+        .photo img {
+            width: 100px;
+            height: 100px;
+            margin: 20px 10px;
+        }
+
+        .photo .active {
+            border: 5px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="phone">
+        <img class="active" src="./images/1.jpg" />
+        <img src="./images/2.jpg" />
+        <img src="./images/3.jpg" />
+        <img src="./images/4.jpg" />
+        <img src="./images/5.jpg" />
+        <img src="./images/6.jpg" />
+        <img src="./images/7.jpg" />
+        <img src="./images/8.jpg" />
+        <img src="./images/9.jpg" />
+        <img src="./images/10.jpg" />
+    </div>
+    <div class="photo">
+        <img class="active" src="./images/1.jpg" />
+        <img src="./images/2.jpg" />
+        <img src="./images/3.jpg" />
+        <img src="./images/4.jpg" />
+        <img src="./images/5.jpg" />
+        <img src="./images/6.jpg" />
+        <img src="./images/7.jpg" />
+        <img src="./images/8.jpg" />
+        <img src="./images/9.jpg" />
+        <img src="./images/10.jpg" />
+    </div>
+
+    <script>
+        var objImg = document.querySelectorAll(".photo img");
+        var phone = document.querySelectorAll(".phone img");
+        for (var i = 0; i < objImg.length; i++) {
+            objImg[i].dataset.index = i;
+            objImg[i].onclick = function () {
+                for (var j = 0; j < objImg.length; j++) {
+                    objImg[j].classList.remove("active");
+                    phone[j].classList.remove("active");
+                }
+                this.classList.add("active");
+
+                var index = this.dataset.index;
+                phone[index].classList.add("active");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

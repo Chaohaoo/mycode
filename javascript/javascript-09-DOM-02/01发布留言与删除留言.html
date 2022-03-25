@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea{
+            border: 2px solid pink;
+        }
+        .hidden{
+            display: none;
+        }
+        ul li{
+            width: 200px;
+            background-color: pink;
+            margin-top: 20px;
+            color: #f00;
+        }
+        ul li a{
+            color: blue;
+            text-decoration: underline;
+            margin-left: 130px;
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <textarea rows="10" cols="30"></textarea>
+    <button>发布</button>
+    <ul>
+        <!-- <li class="hidden"><a href="javascript:void(0)">删除</a></li> -->
+    </ul>
+
+    <script>
+        var textarea = document.querySelector("textarea");
+        var btn = document.querySelector("button");
+        var objUI = document.querySelector("ul");
+        btn.onclick = function(){
+            content = textarea.value;
+            if( content == ""){
+                alert("请输入内容");
+                return;
+            }
+            var newLi = document.createElement("li");
+            newLi.innerText = content;
+            objUI.appendChild(newLi);
+
+            var newA = document.createElement("a");
+            newA.href = "javascript:void(0)";
+            newA.innerText = "删除";
+            newLi.appendChild(newA);
+
+            newA.onclick = function(){
+                this.parentNode.remove();
+            }
+
+            textarea.value = "";
+        }
+    </script>
+</body>
+</html>

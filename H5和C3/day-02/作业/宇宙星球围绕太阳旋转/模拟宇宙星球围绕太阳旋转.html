@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: url(./bg.jpg) no-repeat;
+            background-size: 100% 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .revolve {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: repeating-radial-gradient(circle,
+                    #999 0%,
+                    #999 1%,
+                    transparent 1%,
+                    transparent 7%);
+            position: relative;
+            perspective: 500px;
+        }
+
+        .revolve .yellow {
+            width: 54px;
+            height: 54px;
+            background: yellow;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -28px;
+            margin-top: -28px;
+
+        }
+
+        .revolve .green {
+            width: 20px;
+            height: 20px;
+            background: green;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            margin-left: -10px;
+            margin-top: -10px;
+
+            transform-origin: -40px 10px;
+            animation: animate 2s linear infinite;
+        }
+
+        .revolve .red {
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 65%;
+            margin-left: -10px;
+            margin-top: -10px;
+            transform-origin: -65px 10px;
+            animation: animate 3s linear infinite;
+        }
+
+        .revolve .blue {
+            width: 20px;
+            height: 20px;
+            background: blue;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            margin-left: -10px;
+            margin-top: -10px;
+
+            transform-origin: -90px 10px;
+            animation: animate 4s linear infinite;
+        }
+
+        .revolve .purple {
+            width: 20px;
+            height: 20px;
+            background: purple;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 75%;
+            margin-left: -10px;
+            margin-top: -10px;
+            transform-origin: -115px 10px;
+            animation: animate 5s linear infinite;
+        }
+
+        .revolve .white {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 80%;
+            margin-left: -10px;
+            margin-top: -10px;
+            transform-origin: -140px 10px;
+            animation: animate 6s linear infinite;
+        }
+
+        .revolve .orange {
+            width: 20px;
+            height: 20px;
+            background: orange;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 85%;
+            margin-left: -10px;
+            margin-top: -10px;
+
+            transform-origin: -165px 10px;
+            animation: animate 7s linear infinite;
+        }
+
+        .revolve .chocolate {
+            width: 20px;
+            height: 20px;
+            background: chocolate;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 90%;
+            margin-left: -10px;
+            margin-top: -10px;
+
+            transform-origin: -190px 10px;
+            animation: animate 8s linear infinite;
+        }
+
+        .revolve .skyblue {
+            width: 20px;
+            height: 20px;
+            background: skyblue;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 95%;
+            margin-left: -10px;
+            margin-top: -10px;
+
+            transform-origin: -215px 10px;
+            animation: animate 9s linear infinite;
+        }
+
+        .revolve .greenyellow {
+            width: 20px;
+            height: 20px;
+            background: greenyellow;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            margin-left: -10px;
+            margin-top: -10px;
+
+            transform-origin: -240px 10px;
+
+            animation: animate 10s linear infinite;
+
+        }
+
+        @keyframes animate {
+            form {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="revolve">
+        <div class="yellow"></div>
+        <div class="green"></div>
+        <div class="red"></div>
+        <div class="blue"></div>
+        <div class="purple"></div>
+        <div class="white"></div>
+        <div class="orange"></div>
+        <div class="chocolate"></div>
+        <div class="skyblue"></div>
+        <div class="greenyellow"></div>
+    </div>
+</body>
+
+</html>

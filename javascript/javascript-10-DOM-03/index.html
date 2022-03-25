@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #div1{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            margin-bottom: 10px;
+        }
+
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- <div id="div1">div1的内容</div>
+    <button id="btn1">解绑传统绑定方式</button>
+    <br/>
+    <br/>
+    <div id="div2">div2的内容</div>
+    <br/>
+    <button id="btn2">解绑事件监听绑定方式</button> -->
+
+    <script>
+        // 事件注册就是给元素绑定事件(给元素添加事件)
+
+        // 1. 传统注册方式(传统绑定方式)  dom对象.on事件类型 = 匿名函数
+        /* var div1 = document.getElementById("div1");
+        div1.onclick = function(){
+            console.log("div1的obclick事件111"); //被后面的覆盖了
+        }
+        div1.onclick = function(){
+            console.log("div1的obclick事件222");
+        }
+
+        var div2 = document.getElementById("div2");
+
+        div2.addEventListener("click" , function(){
+            // console.log(this);
+            console.log("div2的onclick事件1111");
+        });
+        div2.addEventListener("click" , function(){
+            // console.log(this);
+            console.log("div2的onclick事件222");
+        });
+
+        function fn1(){
+            console.log("div2的onclick事件2333")
+        }
+        div2.addEventListener("click", fn1); */
+
+        /* var div1 = document.getElementById("div1");
+        //传统注册方式
+        div1.onclick = function(){
+            console.log("div1被点击了");
+        }
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function(){
+            div1.onclick = null;
+        }
+
+        var div2 = document.getElementById("div2");
+        // 事件监听方式
+        function fn1(){
+            console.log("div2被点击了");
+        }
+        div2.addEventListener("click", fn1);
+
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function(){
+            div2.addEventListener("click", fn1);
+        } */
+
+    </script>
+
+</body>
+
+</html>

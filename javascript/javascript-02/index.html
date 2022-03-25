@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // var number = 10;
+        /*    var number = 9;
+            if (number1 % 2 == 0){
+                console.log('这是一个偶数');
+            }else{
+                console.log('这是一个奇数');
+            }
+            console.log('');
+            console.log('');
+            var a = 1,b = 2;
+            if (a > b) {
+                console.log(a);
+            }else{
+                console.log(b);
+            }
+            console.log('');
+            console.log('');
+            // var age=20;
+            var age=16
+            if (age >= 18){
+                console.log('成年');
+            }else{
+                console.log('未成年');
+            } */
+
+        // 如果分数大于或者等于90 优秀
+        // 如果分数大于或者等于80 并且 小于90 良好
+        // 如果分数大于或者等于70 并且 小于80 一般
+        // 如果分数大于或者等于60 并且 小于70 及格
+        // 如果分数小于 60 
+
+        /*     var score = 50;
+            if( score >= 90 ){
+                console.log('优秀');
+            }else if( score >= 80){
+                console.log('良好');
+            }else if( score >= 70){
+                console.log('一般');
+            }else if( score >= 60){
+                console.log('及格');
+            }else{
+                console.log('渣渣辉');
+            } */
+        
+
+            /* var week=8;
+            switch(week){
+                case 0: case 6:
+                console.log('周末');
+                break;
+                case 1: case 2: case 3: case 4: case 5:
+                console.log('工作日');
+                break;
+
+                default:
+                console.log('请输入0-6的数字');
+            } */
+
+
+            //输出1~3的数字 
+            /* for ( i = 1; i <= 3; i++ ) {
+                console.log(i);
+            } */
+
+
+            /* for ( var i = 1; i <= 20; i++){
+                if( i % 7 == 0){
+                    console.log(i);
+                }
+            }
+             */
+
+
+            /* for ( var i = 1; i <= 20; i++){
+                if( i % 2 == 1){
+                    console.log(i);
+                }
+            } */
+
+            
+           /*  var sum = 0; 
+            for ( var i = 1; i <= 20; i++){
+                if( i % 2 == 0){
+                    sum +=i;
+                }
+            }
+            console.log(sum); */
+
+
+            var str = '<table border="1" width="600">';
+                for( var i = 1; i <= 9; i++){
+                    str += '<tr>'
+                    for( var j = 1; j <= i; j++){
+                        str +='<td>' + j + '&times;' + i +'=' + i*j +'</td>';
+                    }
+                    str += '</tr>'
+                }
+                str += '</table>'
+                document.write(str);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

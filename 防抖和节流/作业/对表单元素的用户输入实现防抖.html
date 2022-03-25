@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        input {
+            display: block;
+            width: 600px;
+            height: 50px;
+            padding: 0 20px;
+            font-size: 20px;
+            margin: 50px auto;
+        }
+
+        .message {
+            width: 600px;
+            margin: 0px auto;
+            font-size: 30px;
+            background-color: #ccc;
+            padding: 10px 20px;
+            color: red;
+            height: 30px;
+        }
+    </style>
+
+    <input type="text" placeholder="请输入.." class="input">
+    <div class="box">
+        <!-- <div class="message">11111</div> -->
+    </div>
+    <script>
+        let inputDom = document.querySelector(".input");
+        let box = document.querySelector(".box");
+        let str = ``;
+
+        function addContent() {
+            if (inputDom.value !== "") {
+                str += `<div class="message">${inputDom.value}</div>`;
+                box.innerHTML = str;
+            }
+        };
+
+        function debounce(func, wait) {
+            let timeout = null;
+            let that = null;
+            let args = null;
+
+            return function () {
+                that = this;
+                args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    func.apply(that, args);
+                }, wait)
+            }
+        };
+
+        inputDom.oninput = debounce(addContent, 300);
+    </script>
+</body>
+
+</html>

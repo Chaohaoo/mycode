@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        
+        for(var i = 1; i <= 31; i++){
+            var red = i;
+            for(var j = 1; j <=31; j++){
+                var white = j;
+                for(var k = 1; k <=31; k++){
+                    var black = k;
+                    if( red + white == 25 && white + black == 31 && red + black == 28 ){
+                        document.write('红球:' + i ,'白球:' +j,'黑球:' +k);
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

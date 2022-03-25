@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function getTemplateTime(templateStr, date) {
+            console.log(templateStr);
+            if (/y+/gi.test(templateStr)) {
+                templateStr = templateStr.replace(/y+/gi, function (res) {
+                    return (date.getFullYear() + "").substr(4 - res.length);
+                })
+            }
+
+            let obj = {
+                "M+": date.getMonth() + 1,
+                "d+": date.getDate(),
+                "h+": date.getHours(),
+                "m+": date.getMinutes(),
+                "s+": date.getSeconds()
+            }
+
+            for (let key in obj) {
+                let reg = new RegExp(key, "g");
+                if (reg.test(templateStr)) {
+                    templateStr = templateStr.replace(reg, function (res) {
+                        if (res.length === 1) {
+                            return obj[key];
+                        }
+                        return obj[key] < 10 ? "0" + obj[key] : obj[key];
+                    })
+                }
+            }
+            return templateStr;
+        }
+
+        var date = new Date();
+        var template1 = "YYYY-MM-dd hh:mm:ss";
+        var result1 = getTemplateTime(template1, date);
+        console.log(result1); // 2022-03-16 01:17:48
+        console.log("");
+
+
+        var template2 = "h:m / ss 秒 yy年M月d日";
+        var result2 = getTemplateTime(template2, date);
+        console.log(result2); // 1:17 / 48 秒 22年3月16日
+
+    </script>
+</body>
+
+</html>

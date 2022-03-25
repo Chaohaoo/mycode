@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .anzhuo {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .anzhuo .top {
+            width: 200px;
+            height: 100px;
+            margin: auto;
+            background-color: #A4CA39;
+            border-radius: 100px 100px 0 0;
+            position: relative;
+        }
+
+        .anzhuo .top .point1,
+        .anzhuo .top .point2 {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            bottom: 50px;
+        }
+
+        .anzhuo .top .point1 {
+            left: 50px;
+        }
+
+        .anzhuo .top .point2 {
+            right: 50px;
+        }
+
+        .anzhuo .body {
+            width: 200px;
+            height: 250px;
+            margin: 10px auto 0;
+            background-color: #A4CA39;
+            border-radius: 0 0 35px 35px;
+        }
+
+        .anzhuo .left,
+        .anzhuo .right {
+            width: 50px;
+            height: 150px;
+            background-color: #A4CA39;
+            position: absolute;
+            top: 110px;
+            border-radius: 25px;
+        }
+
+        .anzhuo .left {
+            left: 90px;
+        }
+
+        .anzhuo .right {
+            right: 90px;
+        }
+
+        .anzhuo .footer {
+            width: 200px;
+            display: flex;
+            margin: auto;
+            justify-content: space-evenly;
+        }
+
+        .anzhuo .footer .foot {
+            width: 50px;
+            height: 100px;
+            background-color: #A4CA39;
+            border-radius: 0 0 25px 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="anzhuo">
+        <div class="top">
+            <div class="point1"></div>
+            <div class="point2"></div>
+        </div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="body"></div>
+        <div class="footer">
+            <div class="foot"></div>
+            <div class="foot"></div>
+        </div>
+    </div>
+</body>
+
+</html>

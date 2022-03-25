@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .clearfix {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .banner {
+            width: 1125px;
+            height: 352px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner .content {
+            width: 700%;
+            height: 100%;
+            display: flex;
+        }
+
+        .banner .content img {
+            vertical-align: bottom;
+        }
+
+        .banner .prev,
+        .banner .next {
+            width: 40px;
+            height: 70px;
+            text-align: center;
+            line-height: 70px;
+            font-size: 36px;
+            font-family: "宋体";
+            color: #fff;
+            background-color: orange;
+            position: absolute;
+            top: 50%;
+            margin-top: -35px;
+            cursor: pointer;
+        }
+
+        .banner .prev {
+            left: 0;
+        }
+
+        .banner .next {
+            right: 0;
+        }
+
+        .banner .circle {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, -30px)
+        }
+
+        .banner .circle li {
+            float: left;
+            width: 15px;
+            height: 15px;
+            background-color: #000000;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+
+        .banner .circle .active {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="content">
+            <img src="./images/05.jpg">
+            <img src="./images/01.jpg">
+            <img src="./images/02.jpg">
+            <img src="./images/03.jpg">
+            <img src="./images/04.jpg">
+            <img src="./images/05.jpg">
+            <img src="./images/01.jpg">
+        </div>
+        <div class="prev">&lt;</div>
+        <div class="next">&gt;</div>
+        <ul class="circle clearfix">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+
+        function getStyle(dom, attr) {
+            if (window.getComputedStyle) {
+                // 主流浏览器使用
+                return window.getComputedStyle(dom, null)[attr];
+            } else {
+                // 低版本IE使用
+                return dom.currentStyle[attr];
+            }
+        }
+
+        let banner = document.querySelector(".banner");
+        let content = document.querySelector(".content");
+        let prev = document.querySelector(".prev");
+        let next = document.querySelector(".next");
+        let lis = document.querySelectorAll("li");
+        let bannerImgWidth = parseInt(getStyle(banner, "width")) + "px";
+
+        let currentIndex = 1;
+        let circleIndex = 0;
+        let flag = true;
+
+
+        content.style.transform = `translateX(${-bannerImgWidth * currentIndex}px)`;
+
+        next.onclick = function () {
+            if (flag) {
+                currentIndex++;
+                flag = false;
+                content.style.transition = "1s";
+                content.style.transform = `translateX(${-1125 * currentIndex}px)`;
+
+                /* setTimeout(function () {
+                    if (currentIndex >= 5) {
+                        currentIndex = 0;
+                        content.style.transition = "0s";
+                        content.style.transform = `translateX(0px)`;
+                    }
+                }, 1000); */
+                circleIndex++;
+                if (circleIndex >= 5) {
+                    circleIndex = 0;
+                }
+                for (let i = 0; i < lis.length; i++) {
+                    lis[i].classList.remove("active");
+                }
+                lis[circleIndex].classList.add("active");
+            }
+        };
+
+        content.ontransitionend = function () {
+            if (currentIndex >= 6) {
+                currentIndex = 1;
+                content.style.transition = "none";
+                content.style.transform = `translateX(${-1125 * currentIndex}px)`;
+            }
+
+            if (currentIndex <= 0) {
+                currentIndex = 5;
+                content.style.transition = "none";
+                content.style.transform = `translateX(${-1125 * currentIndex}px)`;
+            }
+            flag = true;
+
+        }
+
+        prev.onclick = function () {
+            if (flag) {
+                currentIndex--;
+                flag = false;
+                content.style.transition = "1s";
+                content.style.transform = `translateX(${-1125 * currentIndex}px)`;
+
+                circleIndex--;
+                if (circleIndex < 0) {
+                    circleIndex = 4;
+                }
+                for (let i = 0; i < lis.length; i++) {
+                    lis[i].classList.remove("active");
+                }
+                lis[circleIndex].classList.add("active");
+
+            }
+        };
+
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].onclick = function () {
+                currentIndex = i + 1;
+                circleIndex = i;
+                content.style.transition = "1s";
+                content.style.transform = `translateX(${-1125 * i}px)`;
+
+                for (let j = 0; j < lis.length; j++) {
+                    lis[j].classList.remove("active");
+                }
+                lis[currentIndex].classList.add("active");
+            }
+        }
+
+        let timer = null;
+
+        function autoPlay() {
+            if (timer === null) {
+                timer = setInterval(function () {
+                    next.onclick();
+                }, 2000);
+            }
+        }
+
+        function stopPlay() {
+            window.clearInterval(timer);
+            timer = null;
+        }
+        autoPlay();
+        banner.onmouseover = function () {
+            stopPlay();
+        }
+        banner.onmouseout = function () {
+            autoPlay();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var array1 = ["a", "b", "c", "e"];
+        var array2 = ["d", "e", "f", "f"];
+        var array3 = array1.concat(array2);
+        var arr = [];
+
+        for (var i = 0; i < array3.length; i++) {
+            if (arr.indexOf(array3[i]) == -1) {
+                arr.push(array3[i]);
+            }
+        }
+        console.log(arr);
+
+    </script>
+</body>
+
+</html>

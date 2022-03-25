@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .banner {
+            width: 1125px;
+            height: 352px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner .bannerUl {
+            width: 700%;
+            height: 100%;
+            margin-left: 0;
+
+        }
+
+        .banner .bannerUl li {
+            width: 1125px;
+            height: 100%;
+            float: left;
+        }
+
+        .banner .bannerUl li img {
+            vertical-align: bottom;
+        }
+
+        .left_button,
+        .right_button {
+            width: 50px;
+            height: 80px;
+            background: orange;
+            color: #fff;
+            font-size: 36px;
+            text-align: center;
+            line-height: 80px;
+            cursor: pointer;
+        }
+
+        .left_button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .right_button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .circle {
+            width: 200px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 30px;
+            margin: auto;
+        }
+
+        .circle ol li {
+            float: left;
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin: 0 10px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .circle ol .active {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <ul class="bannerUl clearfix">
+            <li><a href="#"></a><img src="./images/05.jpg" alt=""></li>
+            <li><a href="#"></a><img src="./images/01.jpg" alt=""></li>
+            <li><a href="#"></a><img src="./images/02.jpg" alt=""></li>
+            <li><a href="#"></a><img src="./images/03.jpg" alt=""></li>
+            <li><a href="#"></a><img src="./images/04.jpg" alt=""></li>
+            <li><a href="#"></a><img src="./images/05.jpg" alt=""></li>
+            <li><a href="#"></a><img src="./images/01.jpg" alt=""></li>
+        </ul>
+        <div class="left_button">&lt;</div>
+        <div class="right_button">&gt;</div>
+
+        <div class="circle clearfix">
+            <ol>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+    </div>
+    <script src="../js/animate.js"></script>
+    <script>
+
+        function $(cssSelector) {
+            var dom = document.querySelectorAll(cssSelector);
+            if (dom.length === 0) {
+                return null;
+            }
+            if (dom.length === 1) {
+                return dom[0];
+            }
+            return dom;
+        }
+
+        var banner = $(".banner ");
+        var img = $(".banner .banner_image img");
+        var bannerUl = $(".banner .bannerUl")
+        var bntLeft = $(".banner .left_button");
+        var bntRight = $(".banner .right_button");
+        var objLi = $(".banner .circle li");
+
+        var currentIndex = 1;
+        var circleIndex = 0;
+        var flag = true;
+
+        var bannerWidth = parseInt(getStyle(banner, "width"))
+        bannerUl.style.marginLeft = -currentIndex * bannerWidth + "px";
+
+        bntRight.onclick = function () {
+            if (flag) {
+                flag = false;
+
+                currentIndex++;
+
+                animate(bannerUl, {
+                    marginLeft: -currentIndex * bannerWidth
+                }, function () {
+                    if (currentIndex >= 6) {
+                        currentIndex = 1;
+                        bannerUl.style.marginLeft = -currentIndex * bannerWidth + "px";
+                    }
+                    flag = true;
+                });
+
+                circleIndex++;
+                if (circleIndex >= 5) {
+                    circleIndex = 0;
+                }
+                for (var i = 0; i < objLi.length; i++) {
+                    objLi[i].classList.remove("active");
+                }
+                objLi[circleIndex].classList.add("active");
+            }
+
+        }
+
+        bntLeft.onclick = function () {
+            if (flag) {
+                flag = false;
+
+                currentIndex--;
+
+                animate(bannerUl, {
+                    marginLeft: -currentIndex * bannerWidth
+                }, function () {
+                    if (currentIndex <= 0) {
+                        currentIndex = 5;
+                        bannerUl.style.marginLeft = -currentIndex * bannerWidth + "px";
+                    }
+                    flag = true;
+                });
+
+                circleIndex--;
+                if (circleIndex < 0) {
+                    circleIndex = 4;
+                }
+                for (var i = 0; i < objLi.length; i++) {
+                    objLi[i].classList.remove("active");
+                }
+                objLi[circleIndex].classList.add("active");
+            }
+        }
+
+        for (var i = 0; i < objLi.length; i++) {
+            objLi[i].dataset.index = i;
+            objLi[i].onclick = function () {
+                var index = Number(this.dataset.index);
+                currentIndex = index + 1;
+
+                animate(bannerUl, {
+                    marginLeft: -currentIndex * bannerWidth
+                });
+
+
+                for (var j = 0; j < objLi.length; j++) {
+                    objLi[j].classList.remove("active");
+                }
+
+                circleIndex = index;
+                objLi[circleIndex].classList.add("active");
+            }
+        }
+
+        var timer = null;
+        function autoPlay() {
+            if (timer === null) {
+                timer = setInterval(function () {
+                    bntRight.onclick();
+                }, 2000);
+            }
+        }
+
+        autoPlay();
+
+        function stopPlay() {
+            window.clearInterval(timer);
+            timer = null;
+        }
+
+        banner.onmouseover = function () {
+            stopPlay();
+        }
+        banner.onmouseout = function () {
+            autoPlay();
+        }
+
+
+
+    </script>
+</body>
+
+</html>

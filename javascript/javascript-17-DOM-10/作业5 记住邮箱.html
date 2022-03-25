@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>记住邮箱</h2>
+    <input type="text" id="text" />
+    <br />
+    <input type="checkbox" id="checkbox" />记住用户邮箱
+    <br />
+    <br />
+    <button>提交</button>
+
+    <script>
+        var text = document.getElementById("text");
+        var checkbox = document.getElementById("checkbox");
+        var btn = document.querySelector("button");
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = "textEmail=" + cvalue + "; expires=" + expires;
+        }
+        function removeCookie(cname) {
+            document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+
+        function getCookieAll() {
+            var arr = document.cookie.split("; ");
+            var obj = {};
+            arr.forEach(function (item) {
+                var arr2 = item.split("=");
+                obj[arr2[0]] = arr2[1];
+            });
+            return obj;
+        }
+
+        btn.onclick = function () {
+            if (checkbox.checked) {
+                var textVal = text.value;
+
+                setCookie("textEmail", textVal, 1);
+            } else {
+                removeCookie("textEmail");
+            }
+        }
+        var allCookie = getCookieAll();
+        console.log(allCookie);
+        if (allCookie.textEmail) {
+            text.value = allCookie.textEmail;
+            checkbox.checked = true;
+        }
+
+
+    </script>
+</body>
+
+</html>

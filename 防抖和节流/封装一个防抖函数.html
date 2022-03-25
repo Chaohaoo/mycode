@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background: pink;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script>
+        let box = document.querySelector(".box");
+        box.onmousemove = _.debounce(function () {
+            console.log(this);
+        }, 1000);
+    </script> -->
+
+    <script>
+        let box = document.querySelector(".box");
+        let count = 0;
+
+        function getUserAction(e) {
+            count++;
+            console.log("this=>", this);
+            console.log("e", e);
+            this.innerText = "触发了" + count + "次事件,当前鼠标在盒子内坐标为" + e.offsetX + "," + e.offsetY;
+            console.log("");
+        }
+
+        function debounce(func, wait) {
+            let timeout = null;
+            return function () {
+                let that = this;
+                clearTimeout(timeout);
+                let argu = arguments;
+                timeout = setTimeout(function () {
+                    func.apply(that, argu);
+                }, wait)
+            }
+        };
+
+        box.onmousemove = debounce(getUserAction, 1000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var phone = function () {
+            var systemVersion = 12;
+            return {
+                showVersion: function () {
+                    console.log(systemVersion);
+                },
+                runApp: function (app) {
+                    if (app.version > systemVersion) {
+                        console.log("当前手机不支持此app: " + app.name + "请更新版本至 version " + app.version + "!");
+                    } else {
+                        console.log(app.content);
+                    }
+
+                },
+                updateSystemVersion: function (version) {
+                    return systemVersion = version;
+                }
+            }
+        }();
+
+        phone.showVersion(); // 12
+        phone.runApp({ name: '抖音', version: 13, content: '抖音发现生活' }); // 当前手机不支持此app: 抖音 请更新版本至 version 13!
+        phone.updateSystemVersion(17);
+        phone.showVersion() // 17
+        phone.runApp({ name: '抖音', version: 12, content: '抖音发现生活' }); // 抖音发现生活
+    </script>
+</body>
+
+</html>

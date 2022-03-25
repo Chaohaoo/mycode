@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav {
+            display: flex;
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+            background-color: gray;
+            list-style: none;
+            color: black;
+            line-height: 30px;
+        }
+
+        .nav li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav .active {
+            color: red;
+        }
+
+        .content {
+            font-size: 36px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        主页
+    </div>
+    <ul class="nav">
+        <li data-path="home" class="active">主页</li>
+        <li data-path="discover">发现</li>
+        <li data-path="order">订单</li>
+        <li data-path="my">我的</li>
+    </ul>
+    <script>
+        let nav = document.querySelector(".nav");
+        let content = document.querySelector(".content");
+        let allLi = document.querySelectorAll(".nav li");
+
+        nav.addEventListener("click", function (e) {
+            let target = e.target;
+            if (target.tagName = "Li") {
+                let path = target.dataset.path;
+                let contentText = target.innerText;
+                content.innerText = contentText;
+                history.pushState({ path: path, content: contentText }, "", path);
+                for (let i = 0; i < allLi.length; i++) {
+                    allLi[i].className = "";
+                }
+                target.className = "active";
+                content.style.color = "#" + Math.random().toString(16).substr(2, 6);
+            }
+        });
+
+        addEventListener("popstate", function () {
+            let state = history.state;
+            for (let i = 0; i < allLi.length; i++) {
+                if (allLi[i].dataset.path == state.path) {
+                    allLi[i].className = "active";
+                } else {
+                    allLi[i].className = "";
+                }
+            }
+            content.innerText = state.content;
+            content.style.color = "#" + Math.random().toString(16).substr(2, 6);
+        });
+
+    </script>
+</body>
+
+</html>

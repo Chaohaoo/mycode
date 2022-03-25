@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 100px;
+            top: 50px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div></div>
+
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        $("div").mousedown(function (e) {
+            var x1 = e.offsetX;
+            var y1 = e.offsetY;
+            $("document").mousemove(function (e) {
+                var x2 = e.clientX - x1;
+                var y2 = e.clientY - y1;
+                $(this).offset({ top: y2, left: x2 });
+
+            });
+        });
+
+        $("document").mouseup(function () {
+            $("document").off("mousemove");
+        });
+
+    </script>
+</body>
+
+</html>

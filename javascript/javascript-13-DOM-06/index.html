@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div {
+            width: 100px;
+            height: 50px;
+            padding: 10px 20px 30px 40px;
+            border-top: 4px solid red;
+            border-left: 2px solid red;
+            margin: 100px auto;
+            background-color: pink;
+        } */
+
+
+        /* div {
+            width: 100px;
+            height: 120px;
+            background: pink;
+            overflow: auto;
+        }
+
+        p {
+            width: 100px;
+            background: skyblue;
+            white-space: nowrap;
+            overflow: auto;
+        } */
+
+
+        body {
+            height: 2000px;
+            width: 2000px;
+            background: linear-gradient(45deg, pink, skyblue, lightgreen)
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div></div> -->
+    <!-- <script>
+        var objDiv = document.querySelector("div");
+
+        console.log(objDiv.clientTop);
+        console.log(objDiv.clientLeft);
+
+        console.log(objDiv.clientWidth);
+        console.log(objDiv.clientHeight);
+
+    </script> -->
+
+    <!-- <h2>垂直滚动条</h2>
+    <div>我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</div>
+    <br />
+    <button id="btn1">获取垂直滚动条相关值</button>
+    <br />
+    <br />
+
+    <h2>水平滚动条</h2>
+    <p>我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落</p>
+    <br />
+    <button id="btn2">获取水平滚动条相关值</button> -->
+
+    <!-- <script>
+        var objDiv = document.querySelector("div");
+        var objP = document.querySelector("p");
+        var btn1 = document.querySelector("#btn1");
+        var btn2 = document.querySelector("#btn2");
+
+        btn1.onclick = function () {
+            console.log(objDiv.scrollTop);
+            console.log(objDiv.scrollHeight);
+        }
+
+        btn2.onclick = function () {
+            console.log(objP.scrollLeft);
+            console.log(objP.scrollWidth);
+
+            console.log(objDiv.clientHeight);
+        }
+    </script> -->
+
+    <script>
+        window.onscroll = function () {
+            console.log("document.scrollTop=>", document.scrollTop);
+            console.log("document.documentElement.scrollTop=>", document.documentElement.scrollTop);
+            console.log("document.body.scrollTop=>", document.body.scrollTop);
+            console.log("window.pageYOffset=>", window.pageYOffset);
+        }
+        // document.onscroll = function () {
+        //     console.log("2页面滚动中");
+        // }
+        // document.documentElement.onscroll = function () {
+        //     console.log("3页面滚动中");
+        // }
+        // document.body.onscroll = function () {
+        //     console.log("4页面滚动中");
+        // }
+    </script>
+
+
+</body>
+
+</html>

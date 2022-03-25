@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function fn(near){
+            if((near%4 == 0 && near%100 != 0) || near%400 == 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        console.log(fn(2019));
+        console.log(fn(2020));
+        console.log(fn(2021));
+        console.log(fn(2022));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

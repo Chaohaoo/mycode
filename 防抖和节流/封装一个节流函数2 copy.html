@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一次不触发,最后一次触发</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: green;
+            text-align: center;
+            line-height: 200px;
+            font-size: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">1</div>
+    <script>
+        let box = document.querySelector(".box");
+        let num = 1;
+
+        function changeNum(e) {
+            num++;
+            box.innerText = num;
+        };
+
+        function throttle(func, wait) {
+            let that = null;
+            let args = null;
+            let old = 0;
+            let timeout = null;
+
+            return function () {
+                that = this;
+                args = arguments;
+                if (!timeout) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(function () {
+                        func.apply(that, args);
+                        timeout = null;
+                    }, wait)
+                }
+            }
+        };
+
+        box.onmousemove = throttle(changeNum, 1000);
+
+    </script>
+</body>
+
+</html>

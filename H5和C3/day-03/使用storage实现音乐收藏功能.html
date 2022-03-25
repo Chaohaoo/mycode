@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .music {
+            width: 300px;
+            margin: 100px auto;
+        }
+
+        .music ul li {
+            display: flex;
+            justify-content: space-between;
+            height: 40px;
+            margin-bottom: 15px;
+        }
+
+        .music ul li span {
+            display: block;
+            font-weight: bold;
+            padding: 0 20px;
+            background: #B4B7BA;
+            color: #333;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="music">
+        <ul>
+            <li>
+                <h2>会不会(吉他版)</h2>
+                <span>未收藏</span>
+            </li>
+            <li>
+                <h2>是但求其爱</h2>
+                <span>未收藏</span>
+            </li>
+            <li>
+                <h2>我很好(吉他版</h2>
+                <span>未收藏</span>
+            </li>
+            <li>
+                <h2>海底</h2>
+                <span>未收藏</span>
+            </li>
+            <li>
+                <h2>执迷不误</h2>
+                <span>未收藏</span>
+            </li>
+            <li>
+                <h2>他只是经过</h2>
+                <span>未收藏</span>
+            </li>
+            <li>
+                <h2>经济舱(Live)</h2>
+                <span>未收藏</span>
+            </li>
+            <li>
+                <h2>是想你的声音啊</h2>
+                <span>未收藏</span>
+            </li>
+            <li>
+                <h2>苦尽甘来</h2>
+                <span>未收藏</span>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        let spans = document.querySelectorAll("span");
+        let h2 = document.querySelectorAll("h2");
+        let arr = new Array(h2.length).fill("");
+
+        for (let i = 0; i < spans.length; i++) {
+            let spanValue = spans[i].innerText;
+            let h2Value = h2[i].innerText;
+            let keys = localStorage.key(i);
+
+            spans[i].onclick = function () {
+                if (spanValue === "未收藏") {
+                    spans[i].innerText = "取消收藏";
+                    spans[i].style.background = "red";
+                    spanValue = "取消收藏";
+                    arr[i] = h2Value;
+                    localStorage.setItem("name" + [i], h2Value);
+                } else {
+                    spans[i].innerText = "未收藏";
+                    spans[i].style.background = "#B4B7BA";
+                    spanValue = "未收藏";
+                    arr[i] = "";
+                    localStorage.removeItem("name" + [i]);
+                }
+            };
+
+            for (let j = 0; j < spans.length; j++) {
+                if (keys === "name" + [j]) {
+                    spans[j].innerText = "取消收藏";
+                    spans[j].style.background = "red";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

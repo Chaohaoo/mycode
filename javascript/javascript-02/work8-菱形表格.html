@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            float: left;
+        }
+    </style>
+
+
+    <script>
+        //第一个表格
+        var str = '<table border="1" width="600" >';
+            for(var i = 9; i >= 1; i--){
+                str += '<tr>';
+                    for(var k = 1;k < i; k++){
+                        str +='<td>&nbsp;</td>';
+                    }
+                    for(var j = 9; j >= i; j--){
+                        str +='<td bgcolor="green";>' + j + '&times;' + i + '=' + i*j + '</td>';
+                    }
+                str += '</tr>';
+            }
+        document.write(str);
+        //第二个表格
+        str += '</table>';
+        var str = '<table border="1" width="600" >';
+            for(var i = 1; i <= 9; i++){
+                str += '<tr>';
+                    for(var j = 1; j <= i; j++){
+                        str +='<td bgcolor="skybule";>' + i + '&times;' + j + '=' + i*j + '</td>';
+                    }
+                    for(var k = 1;k <= 9 - i; k++){
+                        str +='<td>&nbsp;</td>';
+                    }
+                str += '</tr>';
+            }
+        str += '</table>';
+        document.write(str);
+        //第三个表格
+        str += '</table>';
+        var str = '<table border="1" width="600" >';
+            for(var i = 9; i >= 1; i--){
+                str += '<tr>';
+                    for(var k = 1;k <= 9 -i; k++){
+                        str +='<td>&nbsp;</td>';
+                    }
+                    for(var j = 1; j <= i; j++){
+                        str +='<td bgcolor="orange";>' + j + '&times;' + i + '=' + i*j + '</td>';
+                    }
+                    
+                str += '</tr>';
+            }
+        str += '</table>';
+        document.write(str);
+        //第四个表格
+        str += '</table>';
+        var str = '<table border="1" width="600" >';
+            for(var i = 9; i >= 1; i--){
+                str += '<tr>';
+                    for(var j = 1; j <= i; j++){
+                        str +='<td bgcolor="pink";>' + j + '&times;' + i + '=' + i*j + '</td>';
+                    }
+                    for(var k = 1;k <= 9 - i; k++){
+                        str +='<td>&nbsp;</td>';
+                    }
+                str += '</tr>';
+            }
+        str += '</table>';
+        document.write(str);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

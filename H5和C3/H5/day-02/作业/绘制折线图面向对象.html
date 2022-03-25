@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        class lineChart {
+            constructor(canvasDom) {
+                this.ctx = canvasDom.getContext("2d");
+                this.canvasWidth = canvasDom.width;
+                this.canvasheight = canvasDom.height;
+                this.gridSize = 10;
+                this.squareSize = 10;
+
+            }
+            // 初始化方法
+            init(date) {
+                this.drawGrid();
+                this.drawAxis();
+                this.drawDot(date);
+            }
+
+            // 绘制网格线的方法
+            drawGrid() {
+                // 绘制水平方向的网格线
+                for (let i = 1; i < this.canvasheight / this.gridSize; i++) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(0, this.gridSize * i);
+                    this.ctx.lineTo(this.canvasWidth, this.gridSize * i);
+                    this.ctx.strokeStyle = "#ccc";
+                    this.ctx.stroke();
+                }
+                // 绘制垂直方向的网格线
+                for (let i = 1; i < this.canvasWidth / this.gridSize; i++) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(this.gridSize * i, 0);
+                    this.ctx.lineTo(this.gridSize * i, this.canvasheight);
+                    this.ctx.strokeStyle = "#ccc";
+                    this.ctx.stroke();
+                }
+            }
+
+            // 绘制坐标轴的方法
+            drawAxis() {
+                // y 轴
+                this.ctx.beginPath();
+                this.ctx.moveTo(2 * this.gridSize, this.canvasheight - 2 * this.gridSize);
+                this.ctx.lineTo(2 * this.gridSize, 2 * this.gridSize + this.gridSize);
+                this.ctx.strokeStyle = "#000";
+                this.ctx.stroke();
+
+                this.ctx.beginPath();
+                this.ctx.moveTo(2 * this.gridSize, 2 * this.gridSize);
+                this.ctx.lineTo(2 * this.gridSize - this.gridSize / 2, 2 * this.gridSize + this.gridSize);
+                this.ctx.lineTo(2 * this.gridSize + this.gridSize / 2, 2 * this.gridSize + this.gridSize);
+                this.ctx.closePath();
+                this.ctx.fill();
+                //x 轴
+                this.ctx.beginPath();
+                this.ctx.moveTo(2 * this.gridSize, this.canvasheight - 2 * this.gridSize);
+                this.ctx.lineTo(this.canvasWidth - 2 * this.gridSize - this.gridSize, this.canvasheight - 2 * this.gridSize);
+                this.ctx.strokeStyle = "#000";
+                this.ctx.stroke();
+
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.canvasWidth - 2 * this.gridSize, this.canvasheight - 2 * this.gridSize);
+                this.ctx.lineTo(this.canvasWidth - 2 * this.gridSize - this.gridSize, this.canvasheight - 2 * this.gridSize + this.gridSize / 2);
+                this.ctx.lineTo(this.canvasWidth - 2 * this.gridSize - this.gridSize, this.canvasheight - 2 * this.gridSize - this.gridSize / 2);
+                this.ctx.closePath();
+                this.ctx.fill();
+            }
+
+            // 绘制点的方法(包括连线)
+            drawDot(myData) {
+                // 把数据转成坐标轴对应坐标数据
+                let newDate = myData.map(item => {
+                    return {
+                        x: item.x + 2 * this.squareSize,
+                        y: this.canvasheight - item.y - 2 * this.squareSize
+                    }
+                });
+                // 先绘制小方块(小点点)    
+                newDate.forEach(item => {
+                    this.ctx.beginPath();
+                    this.ctx.fillRect(item.x - this.squareSize / 2, item.y - this.squareSize / 2, this.squareSize, this.squareSize);
+                });
+                //连线
+                this.ctx.beginPath();
+                this.ctx.moveTo(2 * this.gridSize, this.canvasheight - 20);
+                newDate.forEach(item => this.ctx.lineTo(item.x, item.y));
+                this.ctx.lineWidth = 2;
+                this.ctx.stroke();
+            }
+        };
+        var data = [
+            { x: 100, y: 120 },
+            { x: 200, y: 160 },
+            { x: 300, y: 240 },
+            { x: 400, y: 320 },
+            { x: 500, y: 80 }
+        ];
+        let canvas = document.querySelector("canvas");
+        let linechart = new lineChart(canvas);
+        linechart.init(data);
+    </script>
+</body>
+
+</html>

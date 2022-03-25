@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        let canvas = document.querySelector("canvas");
+        let ctx = canvas.getContext("2d");
+        // 画布宽度高度
+        let canvasWidth = canvas.width;
+        let canvasHeight = canvas.height;
+        // 画布中心位置
+        let x0 = canvasWidth / 2;
+        let y0 = canvasHeight / 2;
+        // 定义一个太极圆的半径
+        let radius = 100;
+        // 旋转角度
+        let angle = 0;
+        // 定时器标识符
+        let timer = null;
+        // 开启自动旋转
+        function autoPlay() {
+            if (timer === null) {
+                // 开启定时器
+                timer = setInterval(function () {
+                    // 角度自加1
+                    angle++;
+                    if (angle >= 360) {
+                        angle = 0;
+                    }
+                    // 清除整个画布的内容
+                    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+                    // 保存状态(此时还没有进行位移与旋转)
+                    ctx.save();
+                    // 先用矩形演示如何让矩形旋转起来
+                    // 位移,移动坐标轴到画布中心位置
+                    ctx.translate(x0, y0);
+                    // 1度 = π/180弧度
+                    ctx.rotate(angle * (Math.PI / 180));
+                    // 开始绘制太极
+                    // 绘制下部分月牙
+                    ctx.beginPath();
+                    ctx.arc(0, 0, radius, 0, Math.PI);
+                    ctx.arc(-radius / 2, 0, radius / 2, Math.PI, 0);
+                    ctx.arc(radius / 2, 0, radius / 2, Math.PI, 0, true);
+                    ctx.fillStyle = "white";
+                    ctx.fill();
+                    ctx.stroke();
+                    // 绘制左边小圆点
+                    ctx.beginPath();
+                    ctx.arc(-radius / 2, 0, radius / 8, 0, 2 * Math.PI);
+                    ctx.fillStyle = "black";
+                    ctx.fill();
+                    // 绘制上部分月牙
+                    ctx.beginPath();
+                    ctx.arc(0, 0, radius, 0, Math.PI, true);
+                    ctx.arc(-radius / 2, 0, radius / 2, Math.PI, 0);
+                    ctx.arc(radius / 2, 0, radius / 2, Math.PI, 0, true);
+                    ctx.fillStyle = "black";
+                    ctx.fill();
+                    ctx.stroke();
+                    // 绘制右边小圆点
+                    ctx.beginPath();
+                    ctx.arc(radius / 2, 0, radius / 8, 0, 2 * Math.PI);
+                    ctx.fillStyle = "white";
+                    ctx.fill();
+                    // 恢复状态
+                    ctx.restore();
+                }, 10);
+            }
+        }
+        // 停止自动旋转
+        function stopPlay() {
+            window.clearInterval(timer);
+            timer = null;
+        }
+        // 默认开启自动旋转
+        autoPlay();
+        // 鼠标移上canvas画布事件
+        canvas.onmouseover = function () {
+            stopPlay();
+        };
+        // 鼠标移出canvas画布事件
+        canvas.onmouseout = function () {
+            autoPlay();
+        };
+    </script>
+</body>
+
+</html>

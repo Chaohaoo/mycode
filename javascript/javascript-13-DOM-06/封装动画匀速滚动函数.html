@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+            background: skyblue;
+        }
+
+        .box {
+            /* 固定定位 */
+            position: fixed;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <button>垂直去到0位置</button>
+        <button>垂直去到200位置</button>
+        <button>垂直去到500位置</button>
+    </div>
+
+    <script>
+        // 封装一个获取页面滚动距离的兼容函数
+        function getScroll() {
+            var scrollX = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft
+            var scrollY = window.pageYOffset || document.documentElement.scrollLeft || document.body.scrollLeft
+
+            return {
+                x: scrollX,
+                y: scrollY
+            }
+        }
+
+        var timer = null;
+        function animate_line(target) {
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var scrollTop = Math.ceil(getScroll().y);
+                console.log("当前垂直滚动距离=>", scrollTop);
+
+                // 运动速度   根据目标值以及当前滚动条垂直滚动距离计算
+                // 公式  缓慢动画  (目标值-当前值) / 10
+                var speed = (target - scrollTop) / 10;
+
+                // 处理速度 正值 向上取整  负值 向下取整  为了保证能够达到目标值
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                console.log("当前运动速度=>", speed);
+
+                if (scrollTop === target) {
+                    clearInterval(timer);
+                }
+                window.scroll(0, scrollTop + speed)
+            }, 1);
+        }
+        var btns = document.querySelectorAll("button");
+        btns[0].onclick = function () {
+            animate_line(0);
+        }
+        btns[1].onclick = function () {
+            animate_line(200);
+        }
+        btns[2].onclick = function () {
+            animate_line(500);
+        }
+    </script>
+</body>
+
+</html>

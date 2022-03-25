@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>视频播放</title>
+    <!--字体图标库-->
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="css/player.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>视频播放器</h2>
+        <div class="player">
+            <video src="./video/fun.mp4"></video>
+            <div class="controls">
+                <!--播放/暂停-->
+                <a href="javascript:void(0);" class="switch fa fa-play"></a>
+                <!--播放进度-->
+                <div class="progress">
+                    <!-- 线 -->
+                    <div class="line"></div>
+                    <!-- 滑块 -->
+                    <div class="bar"></div>
+                </div>
+                <!--当前播放时间/播放总时长-->
+                <div class="timer">
+                    <span class="current">00:00:00</span> / <span class="total"></span>
+                </div>
+                <!--全屏/取消全屏-->
+                <a href="javascript:void(0);" class="expand fa fa-arrows-alt"></a>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        // let playBtn = document.querySelector(".switch");
+        // let video = document.querySelector("video");
+        // let current = document.querySelector(".current");
+        // let total = document.querySelector(".total"); 
+        function gettime(time) {
+            let hour = Math.floor(time / 3600);
+            hour = hour < 10 ? "0" + hour : hour;
+            let minute = Math.floor((time % 3600) / 60);
+            minute = minute < 10 ? "0" + minute : minute;
+            let second = Math.floor(time % 60);
+            second = second < 10 ? "0" + second : second;
+            return hour + ":" + minute + ":" + second;
+        }
+        $("video")[0].oncanplay = function () {
+            $("video").show();
+            let total = this.duration;
+            $(".total").text(gettime(total));
+        }
+
+        $(".switch").click(function () {
+            if ($("video")[0].paused) {
+                $("video")[0].play();
+            } else {
+                $("video")[0].pause();
+            }
+            $(this).toggleClass("fa-play fa-pause");
+        });
+
+        $(".expand").click(function () {
+            if (document.fullscreenElement == null) {
+                $(".player")[0].requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+            $(this).toggleClass("fa-arrows-alt fa-compress");
+        });
+
+        $("video")[0].ontimeupdate = function () {
+            let time = gettime(this.currentTime)
+            $(".current").html(time);
+            var progress = this.currentTime / this.duration * 100 + "%";
+            $(".line").css("width", progress);
+        }
+
+        $(".bar").click(function (e) {
+            progress = e.offsetX / $(this).width();
+            $("video")[0].currentTime = progress * $("video")[0].duration;
+        });
+
+        $("video")[0].onended = function () {
+            $(".switch").toggleClass("fa-play fa-pause");
+        };
+
+    </script>
+</body>
+
+</html>

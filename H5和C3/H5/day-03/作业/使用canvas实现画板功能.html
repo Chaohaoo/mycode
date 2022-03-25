@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            user-select: none;
+        }
+
+        .drawing-board {
+            width: 600px;
+            margin: 100px auto;
+        }
+
+        .content {
+            width: 600px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+
+        .color {
+            width: 580px;
+            margin-left: 20px;
+            display: flex;
+        }
+
+
+        .color span {
+            float: left;
+            display: block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #000;
+            margin: 10px 15px;
+        }
+
+        .color .black {
+            background: black;
+        }
+
+        .color .red {
+            background: red;
+        }
+
+        .color .orange {
+            background: orange;
+        }
+
+        .color .yellow {
+            background: yellow;
+        }
+
+        .color .green {
+            background: green;
+        }
+
+        .color .blue {
+            background: blue;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn button {
+            margin: 0 20px;
+            height: 30px;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="drawing-board">
+        <div class="content">
+            <div class="color">
+                <p>请输入画笔颜色:</p>
+                <span class="black"></span>
+                <span class="red"></span>
+                <span class="orange"></span>
+                <span class="yellow"></span>
+                <span class="green"></span>
+                <span class="blue"></span>
+            </div>
+            <div class="btn">
+                <button class="empty">清空画布</button>
+                <p>当前所选颜色:<span class="spanColor">黑色</span></p>
+                <button class="clear">橡皮擦</button>
+            </div>
+        </div>
+        <canvas width="600" height="400"></canvas>
+    </div>
+
+    <script>
+        let canvas = document.querySelector("canvas");
+        let ctx = canvas.getContext("2d");
+        let span = document.querySelectorAll(".color>span");
+        let spanColor = document.querySelector(".spanColor");
+        let empty = document.querySelector(".empty");
+        let clear = document.querySelector(".clear");
+
+        let color = "black";
+        let flagClear = true;
+
+        function spanText(color) {
+            if (color == "black") {
+                spanColor.innerText = "黑色";
+                spanColor.style.color = color;
+            } else if (color == "red") {
+                spanColor.innerText = "红色";
+                spanColor.style.color = color;
+            } else if (color == "orange") {
+                spanColor.innerText = "橙色";
+                spanColor.style.color = color;
+            } else if (color == "yellow") {
+                spanColor.innerText = "黄色";
+                spanColor.style.color = color;
+            } else if (color == "green") {
+                spanColor.innerText = "绿色";
+                spanColor.style.color = color;
+            } else {
+                spanColor.innerText = "蓝色";
+                spanColor.style.color = color;
+            }
+        }
+
+
+        canvas.onmousedown = function (e) {
+            ctx.beginPath();
+            ctx.lineWidth = 3;
+            if (flagClear) {
+                ctx.clearRect(e.offsetX - 3, e.offsetY - 3, 6, 6);
+            }
+
+            canvas.onmousemove = function (e) {
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+            };
+
+            if (ctx.strokeStyle !== "#ffffff") {
+                flagClear = false;
+            }
+        };
+
+        span.forEach((item, index) => {
+            item.onclick = function () {
+                color = this.className;
+                spanText(color);
+                ctx.strokeStyle = color;
+            };
+        })
+
+        canvas.onmouseup = function () {
+            canvas.onmousemove = null;
+        };
+
+        empty.onclick = function () {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = "black";
+            flagClear = false;
+        };
+
+        clear.onclick = function () {
+            ctx.strokeStyle = "#ffffff";
+            flagClear = true;
+        }
+    </script>
+</body>
+
+</html>

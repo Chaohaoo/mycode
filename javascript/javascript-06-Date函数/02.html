@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //方法一
+        /* function isrunyear(year) {
+            if(year%4 == 0 && year%100 != 0 || year%400 == 0){
+                return true;
+            }
+            return false;
+        }
+        function getDayNum(year,month,day){
+           if(month == 1){
+               return day;
+           }
+           var monthDay = [31,28,31,30,31,30,31,31,30,31,30,31];
+           var days = 0;
+
+           for(var i = 0 ; i < month -1 ; i++){
+                days += monthDay[i];
+           }
+           days += day;
+           return  days;
+           if(isrunyear(year) && month > 2){
+                days++;
+           }
+           return days;
+        }
+        console.log(getDayNum(2022,1,2));
+        console.log(getDayNum(2022,3,5)); */
+
+        //方法二
+        /* function getDayNum(year,month,day) {
+            // 用户指定一个年月日日期,得到对应的时间戳
+            var getDay1 = new Date(year,month -1,day);
+            // 根据这个用户指定日期得到当前年的第一个对应的时间戳
+            var getDay2 = new Date(year,0,1);
+            // 计算出这个两个日期对象相差多少天
+            var days = (getDay1 - getDay2)/1000/3600/24;
+            days++;
+            return days;
+        }
+        console.log(getDayNum(2022,1,2));
+        console.log(getDayNum(2022,3,5)); */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

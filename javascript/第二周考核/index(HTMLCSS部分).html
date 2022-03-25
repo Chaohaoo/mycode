@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿王者荣耀英雄列表选项卡</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <!-- 英雄介绍层开始 -->
+    <div class="herolist">
+        <!-- 版心 -->
+        <div class="w">
+            <!-- 标题部分 -->
+            <div class="herolist-title">
+                <h2>英雄介绍</h2>
+            </div>
+            <!-- 导航部分 -->
+            <div class="herolist-nav clearfix">
+                <ul>
+                    <li class="active"><a href="#">英雄</a></li>
+                    <li><a href="https://pvp.qq.com/web201605/item.shtml" target="_blank">局内道具</a></li>
+                    <li><a href="https://pvp.qq.com/web201605/summoner.shtml" target="_blank">召唤师技能</a></li>
+                </ul>
+            </div>
+
+            <!-- 英雄主要内容部分 -->
+            <div class="herolist-box">
+                <!-- 英雄类型部分 -->
+                <div class="herolist-types">
+                    <ul class="types-left">
+                        <li>综合</li>
+                        <li>定位</li>
+                    </ul>
+
+                    <ul class="types-name">
+                        <li><span><i></i></span>本周免费</li>
+                        <li><span><i></i></span>新手推荐</li>
+                    </ul>
+
+                    <ul class="types-name">
+                        <li class="active"><span><i></i></span>全部</li>
+                        <li><span><i></i></span>坦克</li>
+                        <li><span><i></i></span>战士</li>
+                        <li><span><i></i></span>刺客</li>
+                        <li><span><i></i></span>法师</li>
+                        <li><span><i></i></span>射手</li>
+                        <li><span><i></i></span>辅助</li>
+                    </ul>
+
+                    <div class="herosearch">
+                        <input type="text" placeholder="请输入你想要搜索的英雄名">
+                        <a href="#"></a>
+                    </div>
+                </div>
+                <!-- 英雄内容部分 -->
+                <div class="herolist-content">
+                    <ul class="clearfix">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/herolist.js"></script>
+    <script>
+        // 翻转目标数组数据heroList
+        var objUI = document.querySelector(".herolist-content ul");
+        for (var i = 0; i < heroList.length; i++) {
+            var newLI = document.createElement("li");
+            objUI.appendChild(newLI);
+
+            var objA = document.createElement("a");
+            newLI.appendChild(objA);
+            objA.href = 'https://pvp.qq.com/web201605/herodetail/' + heroList[heroList.length - i - 1].ename + '.shtml';
+
+            var objImg = document.createElement("img");
+            objA.appendChild(objImg);
+            objImg.src = 'https://game.gtimg.cn/images/yxzj/img201606/heroimg/' + heroList[heroList.length - i - 1].ename + '/' + heroList[heroList.length - i - 1].ename + '.jpg';
+
+            var objSpan = document.createElement("span");
+            newLI.appendChild(objSpan);
+            objSpan.innerHTML = heroList[heroList.length - i - 1].cname;
+
+        }
+        //  根据pTypes数据, 显示所有综合类型 与定位类型
+        var typesName = document.querySelectorAll(".types-name li");
+        var span = document.querySelectorAll(".types-name li span")
+
+        for (var i = 0; i < typesName.length; i++) {
+            span[i].onclick = function () {
+                for (var j = 0; j < typesName.length; j++) {
+                    typesName[j].classList.remove("active");
+                }
+                this.parentNode.classList.add("active");
+            }
+            if (i == 0 || i == 1) {
+                span[i].onclick = function () {
+                    for (var j = 0; j < typesName.length; j++) {
+                        typesName[j].classList.remove("active");
+                    }
+                    this.parentNode.classList.add("active");
+
+                    console.log(pTypes[0].id);
+                    console.log(pTypes[0].ptype);
+                }
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

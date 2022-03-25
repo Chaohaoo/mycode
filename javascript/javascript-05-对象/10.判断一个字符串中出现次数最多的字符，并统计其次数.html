@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //需要判断的字符串
+        var str = 'abcdeooooo';
+        console.log(str.charAt(0));
+        //创建一个空对象
+        var obj = {};
+        //循环遍历该字符串
+        for (var i = 0; i < str.length; i++) {
+            //判断如果obj内没有str.charAt(i) 或 str.[i]的i的值则添加该值,并赋值为1,如果str.charAt(i)存在,则str.charAt(i)加1
+            if (!obj[str.charAt(i)]) {
+                // obj[str[i]] = 1;
+                obj[str.charAt(i)] = 1;
+            } else {
+                obj[str.charAt(i)]++;
+            }
+        }
+        //声明变量count记录str.charAt(i) 或 str.[i]的出现次数
+        var count = 0;
+        //声明变量more记录出现最多的值
+        var more = '';
+        for (var j in obj) {
+            if (obj[j] > count) {
+                count = obj[j];
+                more = j;
+            }
+        }
+        //输出结果
+        console.log(more + '出现次最多,共出现' + count + '次!');
+        console.log(obj);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

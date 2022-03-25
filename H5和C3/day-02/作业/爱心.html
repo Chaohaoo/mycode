@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: pink;
+            perspective: 500px;
+        }
+
+        .div1 {
+            width: 400px;
+            height: 400px;
+            background: pink;
+            margin: 100px auto;
+            position: relative;
+            animation: tiaodong 0.5s linear infinite;
+
+        }
+
+        .div1 .div2 {
+            width: 200px;
+            height: 200px;
+            background-color: #f00;
+            transform: rotate(45deg);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+            box-shadow: 2px 2px 8px 0px red;
+        }
+
+        .div1 .left-circle,
+        .div1 .right-circle {
+            width: 200px;
+            height: 100px;
+            border-bottom: 100px solid #f00;
+            border-radius: 50%;
+            background-color: #f00;
+            position: absolute;
+            top: 18px;
+        }
+
+        .div1 .left-circle {
+            left: 18px;
+            box-shadow: -8px -8px 8px red;
+        }
+
+        .div1 .right-circle {
+            right: 18px;
+            box-shadow: 8px -8px 8px red;
+        }
+
+        .div1:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes tiaodong {
+            form {
+                transform: translate3d(0, 0, 0);
+            }
+
+            to {
+                transform: translate3d(0px, 0px, 30px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <div class="div2"></div>
+        <div class="left-circle"></div>
+        <div class="right-circle"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 70%;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="西瓜">
+    <button>搜索菜谱</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>菜名</th>
+                <th>图片</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <script>
+        var btn = document.querySelector("button");
+        var input = document.querySelector("input");
+        var tbody = document.querySelector("tbody");
+
+        function fn(date) {
+            var data = date.result.list;
+            var tableStr = "";
+            data.forEach(function (item, index) {
+                tableStr += `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${item.name}</td>
+                                <td><img src="${item.pic}" /></td>
+                            </tr>
+                            `;
+            });
+            tbody.innerHTML = tableStr;
+        }
+
+        /* function jsonp(options) {
+
+
+            // 定义一个参数字符串
+            var params = "";
+
+            // 遍历options.data
+            for (var attr in options.data) {
+                params = params + "&" + attr + "=" + options.data[attr];
+            }
+
+            // 创建一个随机函数名,为了防止服务器响应慢,导致同名函数被覆盖
+            var funName = "myJsonp" + Math.random().toString().substr(2);
+
+            // 把options.success函数挂载到window对象中,相当于创建了一个新的全局函数
+            window[funName] = options.success;
+
+            // 拼接请求路径
+            if (options.url.indexOf("?") === -1) {
+                // 判断原来的options.url中是否含有?号
+                options.url = options.url + "?callback=" + funName + params;
+            } else {
+                options.url = options.url + "&callback=" + funName + params;
+            }
+
+            // 通过JS动态创建script标签
+            var newScript = document.createElement("script");
+
+            // 设置script标签的src属性
+            newScript.src = options.url;
+
+            // 把新创建的script标签添加到body中
+            document.body.appendChild(newScript);
+
+            // 当script标签加载完毕以后再删除
+            newScript.onload = function () {
+                // 删除新添加的script标签
+                newScript.remove();
+            };
+        } */
+
+        btn.onclick = function () {
+            var inputContent = input.value;
+
+            var newScript = document.createElement("script");
+            newScript.src = "https://api.binstd.com/recipe/search?keyword=" + inputContent + "&num=10&appkey=85d5254d9987cf31&callback=fn";
+            document.body.appendChild(newScript);
+            newScript.onload = function () {
+                newScript.remove();
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

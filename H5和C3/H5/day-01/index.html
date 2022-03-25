@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <img src="./images/下载.jpg" alt="">
+        <button>全屏显示</button>
+        <button>退出全屏</button>
+        <button>获取全屏显示的元素</button>
+    </div>
+
+
+    <script>
+        let box = document.querySelector(".box");
+        let img = document.querySelector("img");
+        let btns = document.querySelectorAll("button");
+
+        img.onclick = function () {
+            if (document.fullscreenElement === null) {
+                img.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        btns[0].onclick = function () {
+            box.requestFullscreen();
+        }
+        btns[1].onclick = function () {
+            document.exitFullscreen();
+        }
+        btns[2].onclick = function () {
+            console.log(document.fullscreenElement);
+        }
+    </script>
+</body>
+
+</html>

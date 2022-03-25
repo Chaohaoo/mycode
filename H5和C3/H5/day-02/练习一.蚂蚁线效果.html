@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="500" height="500"></canvas>
+
+
+    <script>
+        let canvas = document.querySelector("canvas");
+        let ctx = canvas.getContext("2d");
+
+        ctx.setLineDash([5, 15]);
+        ctx.strokeRect(100, 100, 200, 200);
+
+        let num = 0
+        function move() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            num++;
+            ctx.setLineDash([5, 15]);
+
+            ctx.lineDashOffset = -num;
+
+            ctx.strokeRect(100, 100, 200, 200);
+        }
+
+        setInterval(function () {
+            move();
+        }, 50)
+
+    </script>
+
+</body>
+
+</html>

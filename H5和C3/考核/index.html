@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .content {
+            width: 1226px;
+            height: 460px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .content .banner-img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity .8s;
+        }
+
+        .content .banner-active {
+            opacity: 1;
+        }
+
+        .content .banner-img .img-auto {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content .nav-left {
+            width: 234px;
+            height: 420px;
+            padding: 20px 0;
+            color: #fff;
+            background: rgba(105, 101, 101, 0.6);
+            position: absolute;
+            z-index: 10;
+        }
+
+        .content .nav-left li {
+            height: 42px;
+            padding: 0 20px;
+            line-height: 42px;
+        }
+
+        .content .nav-left li>span {
+            float: right;
+        }
+
+        .content .nav-left>li:hover {
+            background-color: #FF6700;
+        }
+
+        .content .nav-left li a {
+            color: #fff;
+        }
+
+
+        .content .banner img {
+            width: 1226px;
+            height: 460px;
+            vertical-align: bottom;
+            position: relative;
+
+        }
+
+        .content .prev,
+        .content .next {
+            width: 40px;
+            height: 70px;
+            position: absolute;
+            top: 50%;
+            margin-top: -35px;
+        }
+
+        .content .prev {
+            background: url(./images/icon-slides.png) no-repeat -84px 50%;
+            left: 234px;
+        }
+
+        .content .prev:hover {
+            background-color: #7A7A7A;
+        }
+
+        .content .next {
+            background: url(./images/icon-slides.png) no-repeat -125px 50%;
+            right: 0;
+        }
+
+        .content .next:hover {
+            background-color: #7A7A7A;
+        }
+
+        .content .circle {
+            position: absolute;
+            right: 30px;
+            bottom: 30px;
+        }
+
+        .content .circle .active {
+            background-color: #FF6700;
+        }
+
+        .content .dot {
+            float: left;
+            width: 15px;
+            height: 15px;
+            margin-left: 20px;
+            border-radius: 50%;
+            background-color: #ccc;
+        }
+
+        .content .banner .dot:hover {
+            background-color: #FF6700;
+        }
+
+        .sidebar-info {
+            height: 460px;
+            position: absolute;
+            top: 0;
+            left: 234px;
+            background-color: #fff;
+            z-index: 10;
+            box-shadow: 0 8px 16px rgb(0 0 0 / 18%);
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        .item {
+            width: 215px;
+            height: 40px;
+            padding: 18px 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+            background-color: #ddd;
+
+        }
+
+        .info-title {
+            color: #000;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .info-title:hover {
+            color: #ff6700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="banner-img banner-active">
+            <img class="img-auto" src="./images/banner01.jpg" alt="">
+        </div>
+        <div class="banner-img">
+            <img class="img-auto" src="./images/banner02.jpg" alt="">
+        </div>
+        <div class="banner-img">
+            <img class="img-auto" src="./images/banner03.jpg" alt="">
+        </div>
+        <div class="banner-img">
+            <img class="img-auto" src="./images/banner04.jpg" alt="">
+        </div>
+
+        <ul class="nav-left">
+            <li class="nav-li">手机 电话卡</li>
+            <li class="nav-li">电视 盒子</li>
+            <li class="nav-li">笔记本 显示器></li>
+            <li class="nav-li">家电 插线板</li>
+            <li class="nav-li">出行 穿戴</li>
+            <li class="nav-li">智能 路由器</li>
+            <li class="nav-li">电源 配件</li>
+            <li class="nav-li">健康 儿童</li>
+            <li class="nav-li">耳机 音箱</li>
+            <li class="nav-li">生活 箱包</li>
+        </ul>
+
+        <div class="sidebar-info"></div>
+
+        <ul class="circle">
+            <li class="dot active"></li>
+            <li class="dot"></li>
+            <li class="dot"></li>
+            <li class="dot"></li>
+        </ul>
+        <div class="prev"></div>
+        <div class="next"></div>
+    </div>
+
+    <script>
+        var datas = [
+            ["Redmi 9", "腾讯黑鲨游戏手机3", "Redmi 8A", "小米移动 电话卡"],
+            ["小米电视 大师 65英寸OLED", "小米电视5 75英寸", "全面屏电视Pro 55英寸", "小米电视4A 58英寸"],
+            ["RedmiBook 13", "显示器"],
+            ["冰箱", "微波炉", "电磁炉", "插线板"],
+            ["手环5NFC", "滑板车", "无线车充"],
+            ["打印机", "摄像机", "小爱音箱"],
+            ["移动电源", "手机壳"],
+            ["洗手机", "体脂称", "婴儿推车"],
+            ["小爱音箱Art", "Redmi音箱", "蓝牙音箱"],
+            ["小背包", "床垫", "驱蚊器"]
+        ];
+
+        let lis = document.querySelectorAll(".nav-left .nav-li");
+        let sidebar = document.querySelector(".sidebar-info");
+        let bannerImg = document.querySelectorAll(".banner-img");
+        let prev = document.querySelector(".prev");
+        let next = document.querySelector(".next");
+        let dots = document.querySelectorAll(".dot");
+        let content = document.querySelector(".content");
+        let currentIndex = 0;
+        let timeout = null;
+
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].onmousemove = () => {
+                let htmlStr = '';
+                sidebar.style.display = "flex";
+                sidebar.style.width = 248 * datas[i].length + "px";
+
+                for (let j = 0; j < datas[i].length; j++) {
+                    for (let k = 0; k < 6; k++) {
+                        htmlStr += `
+                        <div class="info-item">
+                            <div class="item">
+                                <div class="info-img">
+                                    <img src="./images/nav_imgs/${datas[i][j]}.png" class="img-auto" alt="">
+                                </div>
+                                <div class="info-title">${datas[i][j]}</div>
+                            </div>
+                        </div>
+                        `;
+                    }
+                    sidebar.innerHTML = htmlStr;
+                };
+
+            };
+            lis[i].onmouseout = () => {
+                // 鼠标离开隐藏信息
+                sidebar.style.display = 'none';
+            }
+        }
+
+        sidebar.onmouseover = () => {
+            sidebar.style.display = 'flex';
+        }
+
+        sidebar.onmouseout = () => {
+            sidebar.style.display = 'none';
+        }
+
+        function move(index) {
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+                bannerImg[i].classList.remove('banner-active');
+            }
+            dots[index].classList.add('active');
+            bannerImg[index].classList.add('banner-active');
+        }
+
+        next.onclick = function () {
+            flag = false;
+            currentIndex++;
+            if (currentIndex > bannerImg.length - 1) {
+                currentIndex = 0;
+            }
+            move(currentIndex);
+        }
+
+        prev.onclick = function () {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = bannerImg.length - 1;
+            }
+            move(currentIndex);
+        }
+
+        dots.forEach((item, index) => {
+            item.onclick = function () {
+                currentIndex = index;
+                move(currentIndex);
+            }
+        })
+
+        function autoplay() {
+            timeout = setInterval(function () {
+                next.onclick();
+            }, 2000);
+        }
+
+        function stopPlay() {
+            clearInterval(timeout);
+            timeout = null;
+        }
+
+        autoplay();
+
+        content.onmouseover = function () {
+            stopPlay()
+        }
+
+        content.onmouseout = function () {
+            autoplay()
+        };
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 50px;
+            font-family: "仿宋";
+        }
+    </style>
+    <script>
+        var rowNumber1 = 4;
+        var rowNumber2 = 3;
+        for(var i = 1; i <= rowNumber1; i++ ){
+            for(var k = 1; k <= rowNumber1 - i; k++){
+                document.write('&nbsp;');
+            }
+            for(var j = 1; j <= 2*i - 1; j++){
+                if( j == 1 || j == 2*i -1){
+                    document.write('*');
+                }else{
+                    document.write('&nbsp;');
+                }
+            }
+            document.write('</br>');
+        }
+        for(var i = rowNumber1; i >= 0; i-- ){
+            for(var k = 1; k <= rowNumber1 - i; k++){
+                document.write('&nbsp;');
+            }
+            for(var j = 1; j <= 2*i - 1; j++){
+                if( j == 1 || j == 2*i -1){
+                    document.write('*');
+                }else{
+                    document.write('&nbsp;');
+                }
+            }
+            document.write('</br>');
+        }
+        
+    </script> 
+</head>
+<body>
+    
+</body>
+</html>

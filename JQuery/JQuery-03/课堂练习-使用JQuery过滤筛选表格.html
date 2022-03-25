@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 700px;
+            margin: 50px auto;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .datalist {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            width: 700px;
+        }
+
+        td,
+        th {
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+        }
+
+        /* tr {
+            width: 100px;
+            height: 50px;
+            display: block;
+        } */
+
+        .odd {
+            background-color: #efefef;
+        }
+
+        .selected {
+            background-color: #fc0;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="box">
+        <button>第1行</button>
+        <button>最后1行</button>
+        <button>前3行</button>
+        <button>后3行</button>
+        <button>第4-6行</button>
+        <button>第8行</button>
+
+        <input type="text" id="username">
+        <button class="btn_search">查找</button>
+
+        <h2 class="title">胡润百富榜</h2>
+        <table class="datalist">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        function clearStyle() {
+            $("tbody tr, tbody tr td").removeClass("selected");
+        }
+
+        var arrNames = ['马云', '马化腾', '王卫', '许家印', '何享健', '杨惠妍', '丁磊', '黄峥', '秦英林', '庞康', '张勇', '雷军', '王兴', '张志东', '刘强东', '刘永好', '严昊', '鲁中芳', '陈建华', '薛仁生', '钟慧娟', '许荣茂', '曾晓群', '李书福', '徐航', '李西延', '孙飘扬', '周群飞', '刘永行', '王健林', '吴亚军', '严彬', '袁征', '张一鸣', '王文银', '姚振华', '宗庆后', '左晖', '张近东', '陈邦', '李海燕', '王来春', '林立', '陈向东', '李彦宏', '孙宏斌', '党彦宝', '程雪', '许世辉', '王传福'];
+
+
+        var htmlStr = "";
+        arrNames.map(function (item, index) {
+            if (index % 5 === 0) {
+                htmlStr += "<tr>";
+            }
+            htmlStr += "<td>" + item + "</td>";
+            if (index % 5 === 4) {
+                htmlStr += "</tr>";
+            }
+        });
+        $(".datalist tbody").append(htmlStr);
+
+
+        $(".datalist tbody tr:odd").addClass("odd");
+
+        $("button").eq(0).on("click", function () {
+            clearStyle();
+            $(".datalist tbody tr").first().addClass("selected");
+        });
+
+        $("button").eq(1).on("click", function () {
+            clearStyle();
+            $(".datalist tbody tr").last().addClass("selected");
+        });
+        $("button").eq(2).on("click", function () {
+            clearStyle();
+            $(".datalist tbody tr:lt(3)").addClass("selected");
+        });
+
+        $("button").eq(3).on("click", function () {
+            clearStyle();
+            $(".datalist tbody tr:gt(-4)").addClass("selected");
+
+        });
+
+        $("button").eq(4).on("click", function () {
+            clearStyle();
+            $(".datalist tbody tr").slice(3, 6).addClass("selected");
+        });
+
+        $("button").eq(5).on("click", function () {
+            clearStyle();
+            $(".datalist tbody tr").eq(7).addClass("selected");
+        });
+
+        $(".btn_search").on("click", function () {
+            clearStyle();
+            var usernameValue = $("#username").val();
+            if (usernameValue === "") {
+                return;
+            }
+            $("tbody tr td:contains(" + usernameValue + ")").addClass("selected");
+        });
+
+    </script>
+</body>
+
+</html>

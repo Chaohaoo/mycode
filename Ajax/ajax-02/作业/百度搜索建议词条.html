@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul .active {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="百度一下" id="search">
+    <ul>
+
+    </ul>
+
+    <script src="./JS/jquery-3.6.0.min.js"></script>
+    <script>
+
+
+        $("#search").keypress(function (e) {
+            var searchValue = $("#search").val();
+            if (e.keyCode === 13) {
+                $.ajax({
+                    url: `http://suggestion.baidu.com/su?wd=${searchValue}`,
+                    data: `http://www.baidu.com/s?wd=${searchValue}`,
+                    success: function (data) {
+                        var data = data.s;
+                        data.map(function (item) {
+                            var newLi = $("<li>" + item + "</li>");
+                            $("ul").append(newLi);
+                        });
+
+                        $("li").mouseover(function (e) {
+                            $(e.target).addClass("active").siblings().removeClass("active");
+                        });
+
+                        $("li").click(function (e) {
+                            var newLiText = $(e.target).text();
+                            console.log(newLiText);
+                            window.open(`http://www.baidu.com/s?wd=${newLiText}`);
+                        });
+                    },
+                    dataType: "jsonp",
+                    jsonp: "cb"
+                });
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>

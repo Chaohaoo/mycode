@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            text-align: center;
+        }
+    </style>
+    <script>
+        var arr = [ 
+            ['小A','女',21,'PHP'],['小B','男',23,'C'],
+            ['小C','男',24,'C'],['小D','女',21,'PHP'],
+            ['小E','女',22,'C'],['小F','男',21,'PHP'],
+            ['小G','女',22,'JAVA'],['小H','女',20,'JAVA'],
+            ['小I','女',20,'PHP'],['小J','男',20,'PHP']
+        ];
+        var str = '<table border="1" width="600"  align="center" rules="all">';
+            str += '<tr>';
+                str += '<th>姓名</th>';
+                str += '<th>性别</th>';
+                str += '<th>年龄</th>';
+                str += '<th>学科</th>';
+            str += '</tr>';
+            for(var i = 0; i < arr.length; i++){
+                str += '<tr>';
+                    for(var j = 0; j < arr[i].length; j++){
+                        str += '<td>' + arr[i][j] + '</td>';
+                    }
+                str += '</tr>';
+            }
+        document.write(str);
+        str = '</table>';
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+body {
+    font-size: 16px;
+    color: #000;
+    font-family: '微软雅黑';
+    background-color: #fff;
+    /* 放大页面 排版没问题 */
+    min-width: max-content;
+}
+
+/* 公共的原子类 清除浮动 等等 */
+
+.h10 {
+    height: 10px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/* 单行文本溢出隐藏显示省略号 */
+.hidden {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 多行文本溢出隐藏显示省略号 */
+.hang {
+    display: -webkit-box;
+    /**对象作为伸缩盒子模型展示**/
+    -webkit-box-orient: vertical;
+    /**设置或检索伸缩盒子对象的子元素的排列方式**/
+    -webkit-line-clamp: 3;
+    /**显示的行数**/
+    overflow: hidden;
+    /**隐藏超出的内容**/
+}

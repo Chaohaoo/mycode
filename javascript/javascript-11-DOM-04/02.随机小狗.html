@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dog {
+            background-color: #ccc;
+            margin: auto;
+            position: relative;
+            width: 800px;
+            height: 400px;
+        }
+
+        .dog img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dog">
+        <!-- <img src="./images/dog.png" alt=""> -->
+    </div>
+
+    <script>
+        function getWidth(a, b) {
+            min = Math.min(a, b);
+            max = Math.max(a, b);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        var objDog = document.querySelector(".dog");
+        window.setInterval(function () {
+            newImg = document.createElement("img");
+            newImg.src = "./images/dog.png";
+            var imgWidth = getWidth(30, 200);
+            newImg.width = imgWidth;
+
+            var objDog = getWidth(0, 800);
+            newImg.style.left = getWidth(0, objDog.offsetWidth);
+            // newImg.style.top = getWidth(0, objDog.style.heigth);
+
+            objDog.appendChild(newImg);
+            newImg.onclick = function () {
+                this.remove();
+            }
+
+        }, 1000);
+
+    </script>
+</body>
+
+</html>

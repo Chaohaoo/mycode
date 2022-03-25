@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>赞(1)</button>
+    <button>赞(1)</button>
+    <button>赞(1)</button>
+    <button>赞(1)</button>
+
+    <script>
+        var bnts = document.querySelectorAll("button");
+        function add() {
+            var num = 1;
+            return function () {
+                num++;
+                this.innerText = "赞(" + num + ")";
+            }
+        }
+        for (var i = 0; i < bnts.length; i++) {
+            bnts[i].onclick = add();
+
+        }
+
+
+
+    </script>
+</body>
+
+
+
+
+</html>

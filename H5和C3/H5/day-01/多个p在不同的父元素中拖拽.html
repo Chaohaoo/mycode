@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            margin-right: 20px;
+        }
+
+        p {
+            background-color: orange;
+        }
+
+        .div1 {
+            border-color: #f0f;
+        }
+
+        .div2 {
+            border-color: #0f0;
+        }
+
+        .div3 {
+            border-color: #0ff;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <p draggable="true">我是p1</p>
+        <p draggable="true">我是p2</p>
+    </div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+
+    <script>
+        let targetObj = null;
+
+        document.ondragstart = function (e) {
+            if (e.target.nodeName === "P") {
+                targetObj = e.target;
+                e.target.parentNode.style.borderWidth = "5px";
+                e.target.style.opacity = 0.5;
+            }
+        };
+
+        document.ondragend = function (e) {
+            targetObj.parentNode.style.borderWidth = "1px";
+            targetObj.style.opacity = 1;
+        };
+
+        document.ondragover = function (e) {
+            e.preventDefault();
+        };
+
+        document.ondrop = function (e) {
+            if (e.target.nodeName === "DIV") {
+                targetObj.parentNode.style.borderWidth = "1px";
+                e.target.appendChild(targetObj);
+            }
+        };
+
+
+    </script>
+</body>
+
+</html>

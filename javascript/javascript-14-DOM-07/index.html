@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .myDiv {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        } */
+
+        div {
+            width: 10rem;
+            height: 5rem;
+            background-color: #ff0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <script>
+        //第一种
+        window.onload = function () { };
+        window.addEventListener("load", function () { })
+
+        //第二种
+        document.addEventListener("DOMContentLoader", function () { { } })
+
+        window.onload = function () {
+            console.log("window.onload事件");
+            var myDiv = document.querySelector(".myDiv");
+            console.log(myDiv);
+        }
+    </script>
+    <div class="myDiv">div的内容</div> -->
+
+    <div>div的内容</div>
+    <script>
+        window.onresize = function () {
+            console.log(window.innerWidth);
+            console.log(window.innerHeight);
+
+            document.documentElement.style.fontSize = window.innerWidth / 20 + "px";
+        }
+    </script>
+
+</body>
+
+</html>

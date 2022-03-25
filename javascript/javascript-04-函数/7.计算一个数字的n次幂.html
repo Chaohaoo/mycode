@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        
+        function pow(m,n){
+            var sum = 1;
+            if(m == 0 || n ==0){
+                return 1;
+            }
+            if(n > 0){
+                for(var i = 1; i <= n; i++ ){
+                    sum *= m
+                }
+                return sum;
+            }else if(n < 0){
+                for(var i = 1; i <= -1*n; i++ ){
+                    sum *= m
+                }
+                return 1/sum;
+            }else if(n >0 && n < 1){
+               
+            }
+        }
+        console.log(pow(2,2));
+        console.log(pow(2,-1));
+        console.log(pow(2,0.5));
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

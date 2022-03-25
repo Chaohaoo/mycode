@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            width: 700px;
+            margin: 100px auto;
+        }
+
+        input {
+            width: 100%;
+            border: 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        meter {
+            width: 700px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>学习档案</legend>
+            <p>
+                姓名:
+                <br>
+                <input type="text" placeholder="请输入用户名" required>
+            </p>
+            <p>
+                手机号码:
+                <br>
+                <input type="tel">
+            </p>
+            <p>
+                邮箱地址:
+                <br>
+                <input type="email">
+            </p>
+            <p>
+                所属学院:
+                <br>
+                <input type="text" list="mylist" placeholder="请选择">
+                <datalist id="mylist">
+                    <option value="九江职业技术学院" />
+                    <option value="瑞昌二中" />
+                    <option value="瑞昌四中" />
+                    <option value="实验小学" />
+                </datalist>
+            </p>
+            <p>
+                <label for="score">入学成绩:</label>
+                <input type="number" max="100" min="0" placeholder="0" id="score">
+            </p>
+            <p>
+                <label for="level">基础水平:</label>
+                <meter id="level" max="100" min="0" low="59" high="90"></meter>
+            </p>
+            <p>
+                入学日期:
+                <input type="date">
+            </p>
+            <p>
+                毕业日期:
+                <input type="date">
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+        </fieldset>
+    </form>
+
+    <script>
+        document.getElementById("score").oninput = function () {
+            document.getElementById("level").value = this.value;
+        }
+    </script>
+</body>
+
+</html>

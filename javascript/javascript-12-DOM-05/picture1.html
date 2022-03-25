@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .div1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1"></div>
+    <button>按钮</button>
+
+    <script>
+        var div1 = document.querySelector(".div1");
+        var btn = document.querySelector("button");
+
+        var move = 5;
+        var timer = null;
+        btn.onclick = function () {
+            setInterval(function () {
+                if (timer === null) {
+                    if (div1.style.marginLeft == "300px") {
+                        return;
+                    }
+                    div1.style.marginLeft = div1.offsetLeft + move + "px";
+                }
+            }, 10);
+        }
+    </script>
+</body>
+
+</html>

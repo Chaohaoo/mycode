@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .open-door {
+            width: 450px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+            perspective: 800px;
+        }
+
+        .left-door,
+        .right-door {
+            width: 223px;
+            height: 300px;
+            border: 1px solid #000;
+            background: url(./images/bg.png);
+            position: absolute;
+            top: 0;
+            transition: 1.5s;
+
+
+        }
+
+        .left-door {
+            left: 0;
+            transform-origin: left top;
+        }
+
+        .right-door {
+            right: 0;
+            transform-origin: right top;
+
+        }
+
+        .left-door span,
+        .right-door span {
+            width: 20px;
+            height: 20px;
+            display: block;
+            border: 1px solid #000;
+            border-radius: 50%;
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .right-door span {
+            left: 8px;
+        }
+
+        .open-door:hover .left-door {
+            transform: rotateY(-135deg);
+        }
+
+        .open-door:hover .right-door {
+            transform: rotateY(135deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="open-door">
+        <div class="left-door">
+            <span></span>
+        </div>
+        <div class="right-door">
+            <span></span>
+        </div>
+        <img src="./images/3.jpg">
+    </div>
+</body>
+
+</html>

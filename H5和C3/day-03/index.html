@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .box {
+            width: 350px;
+            border: 1px solid #cccccc;
+            margin: 100px auto;
+        }
+
+        .box ul li {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px;
+        }
+
+        .box ul li .title {
+            font-size: 20px;
+        }
+
+        .box ul li .collect {
+            border-radius: 5px;
+            background: #b4b7ba;
+            padding: 5px 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .box ul li .collect.active {
+            background: #f34343;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <!-- <li>
+                    <h2 class="title">标题</h2>
+                    <span class="collect active">取消收藏</span>
+                </li>
+                <li>
+                    <h2 class="title">标题</h2>
+                    <span class="collect">未收藏</span>
+                </li> -->
+        </ul>
+    </div>
+    <script>
+        // 初始数据
+        var songs = [
+            { id: 1, name: "会不会（吉他版）" },
+            { id: 2, name: "是但求其爱" },
+            { id: 3, name: "我很好（吉他版）" },
+            { id: 4, name: "海底" },
+            { id: 5, name: "执迷不悟" },
+            { id: 6, name: "他只是经过" },
+            { id: 7, name: "经济舱 (Live)" },
+            { id: 8, name: "是想你的声音啊" },
+            { id: 9, name: "苦尽甘来" },
+            { id: 10, name: "天外来物" },
+        ];
+
+        // 获取相关dom对象
+        let boxUl = document.querySelector(".box ul");
+
+        // 根据数据渲染DOM结构
+        function renderData(data) {
+            // 定义一个模板字符串
+            let htmlStr = ``;
+
+            // 遍历data数据
+            data.forEach(item => {
+                // 拼接字符串
+                htmlStr += `<li>`;
+
+                htmlStr += `<h2 class="title">${item.name}</h2>`;
+
+                if (item.isCollect) {
+                    // 判断item.isCollect的值
+                    htmlStr += `<span class="collect active" data-id="${item.id}">取消收藏</span>`;
+                } else {
+                    htmlStr += `<span class="collect"  data-id="${item.id}">未收藏</span>`;
+                }
+
+                htmlStr += `</li>`;
+            });
+
+            // 设置.box里面ul的标签内容
+            boxUl.innerHTML = htmlStr;
+        }
+
+        // 处理以后的songList数据
+        let songList = null;
+
+        // 初始化方法
+        function init() {
+            // 尝试获取本地localStorage中是否存在指定的目标数据
+            songList = window.localStorage.getItem("mySongList");
+
+            if (songList === null) {
+                // 那么代表localStorage不存在目标数据
+                // 对现有的数据songs进行逐一处理,每个对象添加一个新属性isCollect表示是否已经收藏 false表示未收藏
+                songList = songs.map(item => {
+                    // 添加属性
+                    item.isCollect = false;
+                    // 返回item
+                    return item;
+                });
+            } else {
+                // json字符串转成json对象
+                songList = JSON.parse(songList);
+            }
+
+            // 渲染数据
+            // 注意: songList就是处理以后的数据
+            renderData(songList);
+        }
+
+        // 使用事件委托绑定鼠标点击事件
+        boxUl.onclick = function (e) {
+            if (e.target.nodeName === "SPAN") {
+                // 获取span身上自定义属性data-id值
+                let currentId = e.target.getAttribute("data-id");
+                // 通过currentId值,找到数据里面的某个对象的索引号
+                let index = songList.findIndex(item => item.id == currentId);
+                // 根据索引号找到目标对象数据
+                // console.log(songList[index]);
+
+                // 对isCollect属性进行取反
+                songList[index].isCollect = !songList[index].isCollect;
+
+                // 把处理以后的songList数据,重新保存进中
+                window.localStorage.setItem("mySongList", JSON.stringify(songList));
+
+                // 重新渲染数据到DOM结构中
+                renderData(songList);
+            }
+        };
+
+        init();
+    </script>
+</body>
+
+</html>

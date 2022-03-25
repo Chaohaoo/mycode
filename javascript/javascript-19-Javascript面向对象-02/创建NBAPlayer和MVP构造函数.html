@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function NBAPlay(name, age, height) {
+            this.name = name;
+            this.age = age;
+            this.height = height;
+        }
+
+        NBAPlay.prototype.say = function () {
+            console.log("我是" + this.name + ",今年" + this.age + "岁,身高" + this.height + "cm");
+        }
+
+        NBAPlay.prototype.shot = function () {
+            console.log(this.name + "投篮了");
+        }
+
+        // MVP.prototype = new NBAPlay;
+        // MVP.prototype.constructor = MVP;
+
+        for (var attr in NBAPlay.prototype) {
+            MVP.prototype[attr] = NBAPlay.prototype[attr];
+        }
+
+        function MVP(name, age, height, year) {
+            NBAPlay.apply(this, arguments);
+            this.year = year;
+
+        }
+
+        MVP.prototype.showMVP = function () {
+            console.log("我是" + this.name + "我是" + this.year + "年的MVP");
+        }
+
+
+        var Play = new NBAPlay("库里", 30, 191);
+        var MVP = new MVP("库里", 30, 191, 2016);
+        Play.say();
+        Play.shot();
+        console.log(MVP.name);
+        console.log(MVP.age);
+        console.log(MVP.height);
+        MVP.say();
+        MVP.shot();
+        MVP.showMVP();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script>
+        var obj1 = {
+            pingpai: "雪佛兰",
+            xh: "Bd Air",
+            color: "红色",
+            chepong: "无",
+            peopleSum: 4,
+            licheng: 5000,
+            year: 1957
+        }
+
+        var obj2 = new Object();
+        obj2.pingpai = "雪佛兰";
+        obj2.xh = "Bd Air";
+        obj2.color = "红色";
+        obj2.chepong = "无";
+        obj2.peopleSum = 4;
+        obj2.licheng = 5000;
+        obj2.year = 1957;
+
+        console.log(obj1);
+        console.log(obj2);
+    </script> -->
+
+    <!-- <script>
+        var song = {
+            sname: "芒种",
+            singer: "腾格尔",
+            minute: 3,
+            second: 50,
+            year: 2019,
+            play: function () {
+                console.log("播放");
+            },
+            stop: function () {
+                console.log("暂停");
+            }
+        }
+    </script> -->
+
+    <script>
+        function HeroIntroduction(nickname, name, type) {
+            this.nickname = nickname;
+            this.name = name;
+            this.type = type;
+
+            this.beidong = function () {
+                console.log("噬目" + this.name + "被动：夏侯惇生命值低于50％时，每一次技能或普通攻击命中目标都会回复4.5％的最大生命值，持续8秒；每30秒最多触发一次");
+            };
+        }
+        var yx = new HeroIntroduction("不羁之风", "夏侯惇", "坦克");
+        console.log(yx);
+        console.log(yx.nickname);
+        console.log(yx.name);
+        console.log(yx.type);
+
+        yx.beidong();
+    </script>
+</body>
+
+</html>

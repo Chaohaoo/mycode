@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: 0;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .clearfix {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .warp {
+            width: 820px;
+            height: 374px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .warp .photo {
+            width: 500%;
+            position: absolute;
+            left: 0;
+        }
+
+        .warp .photo img {
+            float: left;
+        }
+
+        .warp .nav {
+            position: absolute;
+            top: 340px;
+        }
+
+        .warp .nav ul {
+            width: 820px;
+
+        }
+
+        .warp .nav ul li {
+            float: left;
+            width: 164px;
+            font-weight: 400;
+            background-color: #E3E2E2;
+            color: #000;
+            text-align: center;
+            padding: 5px 0;
+            cursor: pointer;
+
+        }
+
+        .warp .nav ul .active {
+            background-color: #fff;
+            border-bottom: 3px solid orange;
+            color: #C7B58E;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="warp">
+        <div class="photo clearfix">
+            <img src="./images/1.jpg" alt="">
+            <img src="./images/2.jpg" alt="">
+            <img src="./images/3.jpg" alt="">
+            <img src="./images/4.jpg" alt="">
+            <img src="./images/5.jpg" alt="">
+        </div>
+        <div class="nav">
+            <ul class="item clearfix">
+                <li class="active">FPX冠军皮肤</li>
+                <li>魔女 婕拉 至臻</li>
+                <li>2020LPL春季赛季后赛</li>
+                <li>挑战主播赢现金</li>
+                <li>每周限时优惠</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        function goto(index) {
+            $(".nav ul li").eq(index).addClass("active").siblings().removeClass("active");
+
+            $(".photo").stop().animate({ left: "-" + index * $(".photo img").prop("width") + "px" });
+        }
+
+        $(".nav ul li").click(function () {
+            var index = $(this).index();
+            /* $(this).addClass("active").siblings().removeClass("active");
+            $(".photo").stop().animate({ left: "-" + $(this).index() * $(".photo img").prop("width") + "px" }); */
+            goto(index);
+
+            currentIndex = index;
+        });
+
+        var currentIndex = 0;
+
+
+        function autoPlay() {
+            var timer = setInterval(function () {
+                currentIndex++;
+                currentIndex %= $(".nav ul li").length;
+                /* $(".nav ul li").eq(currentIndex).addClass("active").siblings().removeClass("active");
+    
+                $(".photo").stop().animate({ left: "-" + currentIndex * $(".photo img").prop("width") + "px" }); */
+                goto(currentIndex);
+
+            }, 2000)
+            return timer;
+        }
+
+        function stopPlay(timer) {
+            clearInterval(timer);
+        }
+
+        var t = autoPlay();
+        $(".warp").hover(function () {
+            stopPlay(t);
+        }, function () {
+            t = autoPlay();
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .nav {
+        width: 80%;
+        height: 50px;
+        background-color: #F5F5F6;
+        margin: 50px auto;
+    }
+
+    .nav ul {
+        display: flex;
+    }
+
+    .nav ul li {
+        width: 100px;
+        height: 40px;
+        background-color: #FFFFFF;
+        margin: 5px;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+
+
+    }
+
+    .nav ul .active {
+        background-color: skyblue;
+    }
+
+    table {
+        width: 80%;
+        margin: auto;
+    }
+
+    table tr {
+        background-color: #E9ECEF;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="nav">
+        <ul>
+            <li class="prevPage">&lt;&lt;</li>
+            <li class="item active">1</li>
+            <li class="item">2</li>
+            <li class="item">3</li>
+            <li class="item">4</li>
+            <li class="item">5</li>
+            <li class="item">6</li>
+            <li class="item">7</li>
+            <li class="item">8</li>
+            <li class="item">9</li>
+            <li class="item">10</li>
+            <li class="nextPage">&gt;&gt;</li>
+        </ul>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td style="width: 50px">序号</td>
+                <td style="width: 50px">标题</td>
+                <td style="width: 80%;">内容</td>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        var tbody = document.querySelector("tbody");
+        var objLi = document.querySelectorAll(".nav ul .item");
+        var nextPage = document.querySelector(".nav ul .nextPage")
+        var prevPage = document.querySelector(".nav ul .prevPage")
+        var LiIndex = 0;
+
+        function getDate(page) {
+            var xhr = new XMLHttpRequest();
+
+            var data = {
+                page: page,
+                num: 10,
+                token: "iWodJ1xnZJjTM9Nt"
+            }
+
+            var params = "";
+            for (var attr in data) {
+                params = params + "&" + attr + "=" + data[attr];
+            }
+            params = params.substr(1);
+
+
+            xhr.open("get", `https://v2.alapi.cn/api/joke?${params}`);
+            xhr.send();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText).data;
+                    var tableStr = "";
+                    data.forEach(function (item, index) {
+                        tableStr += `
+                                <tr>
+                                    <td>${index + 1}</td>
+                                    <td>${item.title}</td>
+                                    <td>${item.content}</td>
+                                </tr>
+                                `;
+                    });
+                    tbody.innerHTML = tableStr;
+                }
+            };
+        }
+
+        getDate(1);
+
+
+        for (var i = 0; i < objLi.length; i++) {
+            objLi[i].onclick = function (index) {
+                return function () {
+                    var currentindex = index + 1;
+                    getDate(currentindex);
+                    objLi[LiIndex].classList.remove("active");
+                    this.classList.add("active");
+                    LiIndex = index;
+                }
+            }(i);
+        }
+
+        nextPage.onclick = function () {
+            // 获取当前页码
+            var currentPage = document.querySelector(".nav .active").innerText;
+
+            // 把字符串类型转成数值类型
+            currentPage = Number(currentPage);
+
+            // 边界判断
+            if (currentPage >= 10) {
+                return;
+            }
+            // 计算出下一页页码
+            nextPageSize = currentPage + 1;
+            // 根据页码获取数据并渲染
+            getDate(nextPageSize);
+            // 清除之前高亮的li
+            objLi[LiIndex].classList.remove("active");
+            // 高亮指定li
+            objLi[currentPage].classList.add("active");
+            // 更新liHightIndex的值
+            LiIndex = currentPage;
+        };
+
+
+        prevPage.onclick = function () {
+            // 获取当前页码
+            var currentPage = document.querySelector(".nav .active").innerText;
+
+            // 把字符串类型转成数值类型
+            currentPage = Number(currentPage);
+
+            // 边界判断
+            if (currentPage <= 1) {
+                return;
+            }
+            // 计算出下一页码
+            prevPageSize = currentPage - 1;
+            console.log(prevPageSize);
+            // 根据页码获取数据并渲染
+            getDate(prevPageSize);
+            // 清除之前高亮的li
+            objLi[LiIndex].classList.remove("active");
+            // 高亮指定li
+            objLi[prevPageSize - 1].classList.add("active");
+            // 更新liHightIndex的值
+            LiIndex = prevPageSize - 1;
+        };
+
+
+    </script>
+</body>
+
+</html>

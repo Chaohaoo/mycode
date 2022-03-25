@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // instanceof 运算符
+        // instanceof 可以判断一个对象是否是某个构造函数的实例,返回布尔值
+        /* var arr = [];
+        var obj = {};
+        var kong = null;
+        console.log(typeof arr);
+        console.log(typeof obj);
+        console.log(typeof kong);
+
+        //Array.isArray(变量名)  返回值为布尔值 ture / false
+        console.log(Array.isArray(arr));
+        console.log(Array.isArray(obj));
+        console.log(Array.isArray(kong));
+
+        //变量名 instanceof Array 返回值为布尔值 ture / false
+        console.log(arr instanceof Array);
+        console.log(obj instanceof Array);
+        console.log(kong instanceof Array); */
+
+         // 数组对象.filter() 过滤 , 可以对数组中所有数组元素进行过滤(筛选),把满足条件的数组元素放进一个新数组中,filter会返回这个新数组
+        /* var arr = [10,20,30,40,50];
+        var newArr = arr.filter( function(item,index,array){
+            console.log(item,index,array);
+            return item > 20;
+        });
+        console.log(newArr); */
+
+
+        // map() 逐一处理     用得多 重点
+        // 需求: 让每个数组元素都扩大为原来的2倍,放进新数组中
+        /* var arr = [10,20,33,41,56,65];
+        var res = arr.map( function(item,index,array){
+            console.log(item,index,array);
+            return 'a';
+        });
+        console.log(res); */
+
+    </script> 
+</body>
+</html>

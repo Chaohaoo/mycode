@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 1000px;
+            height: 300px;
+            background-color: pink;
+            margin: auto;
+            position: relative;
+        }
+
+        .box .yys {
+            width: 200px;
+            height: 233px;
+            background: url(./images-yys/cartoon.png) no-repeat center / cover;
+            background-position: -405px 0px;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="yys"></div>
+    </div>
+
+
+    <script>
+        var objBox = document.querySelector(".box");
+        var objYys = document.querySelector(".box .yys");
+
+        objBox.onmousemove = function (e) {
+            var x = e.clientX;
+            var y = e.clientY;
+            var moveX = e.offsetX;
+
+            if (moveX <= 500 && moveX > 400) {
+                objYys.style.backgroundPosition = "-405px";
+
+            } else if (moveX <= 400 && moveX > 300) {
+                objYys.style.backgroundPosition = "-210px";
+            } else if (moveX <= 300) {
+                objYys.style.backgroundPosition = "-10px";
+            } else if (moveX >= 500 && moveX < 600) {
+                objYys.style.backgroundPosition = "-405px";
+            } else if (moveX >= 600 && moveX < 700) {
+                objYys.style.backgroundPosition = "-610px";
+            } else if (moveX >= 700) {
+                objYys.style.backgroundPosition = "-810px";
+            }
+            objYys.onmousemove = function (e) {
+                var x2 = e.offsetX;
+                if (x2 <= 125 & x2 >= 75) {
+                    objYys.style.backgroundPosition = "-405px";
+                } else if (x2 <= 75 & x2 >= 0) {
+                    objYys.style.backgroundPosition = "-210px";
+                } else if (x2 >= 125 && x2 <= 200) {
+                    objYys.style.backgroundPosition = "-610px";
+                }
+            }
+
+        }
+    </script>
+</body>
+
+
+
+</html>

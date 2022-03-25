@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <!-- 输入框 -->
+        <input type="text" placeholder="请输入需要添加的选项" class="add" />
+        <button class="addBtn">添加</button>
+    </p>
+
+    <p>
+        <!-- 按钮组 -->
+        <button class="btn">全选</button>
+        <button class="btn">全不选</button>
+        <button class="btn">反选</button>
+        <button class="btn">删除所选</button>
+    </p>
+
+    <!-- 复选框内容 -->
+    <p><label><input type="checkbox" class="check" />家里没宽带</label></p>
+    <p><label><input type="checkbox" class="check" />网速不够快</label></p>
+    <p><label><input type="checkbox" class="check" />手机没流量</label></p>
+    <p><label><input type="checkbox" class="check" />学校无wifi</label></p>
+
+    <script>
+        var objAdd = document.querySelector(".addBtn");
+        var addInput = document.querySelector(".add");
+        var bnts = document.querySelectorAll(".btn");
+
+        objAdd.onclick = function () {
+            var content = addInput.value;
+            if (content == "") {
+                alert("请输入内容,再添加内容");
+                return;
+            }
+            var newP = document.createElement("p");
+            newP.innerHTML = '<label><input type="checkbox" class="check"/>' + content + '</label>';
+            document.body.appendChild(newP);
+            addInput.value = "";
+        }
+
+        bnts[0].onclick = function () {
+            var checkboxs = document.querySelectorAll("p .check");
+            for (var i = 0; i < checkboxs.length; i++) {
+                checkboxs[i].checked = true;
+            }
+
+        }
+
+        bnts[1].onclick = function () {
+            var checkboxs = document.querySelectorAll("p .check");
+            for (var i = 0; i < checkboxs.length; i++) {
+                checkboxs[i].checked = false;
+            }
+        }
+
+        bnts[2].onclick = function () {
+            var checkboxs = document.querySelectorAll("p .check");
+            for (var i = 0; i < checkboxs.length; i++) {
+                checkboxs[i].checked = !checkboxs[i].checked;
+            }
+        }
+
+        bnts[3].onclick = function () {
+            var checkboxs = document.querySelectorAll("p .check");
+            for (var i = 0; i < checkboxs.length; i++) {
+                if (checkboxs[i].checked) {
+                    checkboxs[i].parentNode.parentNode.remove();
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入需要添加的选项">
+    <button>添加</button>
+    <br />
+    <br />
+    <button>全选</button>
+    <button>全不选</button>
+    <button>反选</button>
+    <button>删除所选</button>
+    <p><label><input type="checkbox">家里没宽带</label></p>
+    <p><label><input type="checkbox">网速不够快</label></p>
+    <p><label><input type="checkbox">手机没流量</label></p>
+    <p><label><input type="checkbox">学校无wifi</label></p>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>
+        $("button").eq(0).click(function () {
+            $("body").append('<p><label><input type="checkbox">' + $(":text").val() + '</label></p>');
+            $(":text").val("");
+        });
+
+        $("button").eq(1).click(function () {
+            $(":checkbox").prop("checked", true);
+        });
+
+        $("button").eq(2).click(function () {
+            $(":checkbox").prop("checked", false);
+        });
+
+        $("button").eq(3).click(function () {
+            $(":checkbox").each(function () {
+                $(this).prop("checked", !$(this).prop("checked"));
+            });
+        });
+
+        $("button").eq(4).click(function () {
+            $(":checkbox:checked").parents("p").remove();
+        });
+    </script>
+</body>
+
+</html>

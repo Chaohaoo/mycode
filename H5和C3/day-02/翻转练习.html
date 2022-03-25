@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div {
+            width: 224px;
+            height: 224px;
+            margin: 100px auto;
+        }
+
+        .div img {
+            position: absolute;
+            transition: 1s;
+
+        }
+
+        .div .img1 {
+            transform: rotateY(-180deg);
+        }
+
+        .div .img2 {
+            backface-visibility: hidden;
+
+        }
+
+        .div:hover .img2 {
+            transform: rotateY(180deg);
+        }
+
+        .div:hover .img1 {
+            transform: rotateY(0deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div">
+        <img src="./images/hou.png" class="img1">
+        <img src="./images/qian.png" class="img2">
+    </div>2
+</body>
+
+</html>

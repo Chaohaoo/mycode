@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .father {
+            width: 500px;
+            height: 500px;
+            background: orange;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .father .son {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+
+            transition: width 1s linear 2s, height 2s linear;
+        }
+
+        .father:hover .son {
+            width: 200px;
+            height: 300px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">son元素</div>
+    </div>
+</body>
+
+</html>

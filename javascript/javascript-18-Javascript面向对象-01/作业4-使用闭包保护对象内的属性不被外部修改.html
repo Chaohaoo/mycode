@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Bird(weight) {
+            var weight = weight;
+
+            return {
+                getWeight: function () {
+                    return weight;
+                },
+
+                addWeight: function () {
+                    weight++;
+                }
+            }
+
+        }
+
+
+        var bird = new Bird(10);
+        console.log(bird.weight);// undefined
+        // getWeight(); // 10
+        console.log(bird.getWeight()); // 10
+        // addWeight();
+        console.log(bird.addWeight()); // 11
+
+
+    </script>
+</body>
+
+</html>

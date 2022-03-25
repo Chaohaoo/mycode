@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="longitude"></p>
+    <p class="latitude"></p>
+    <script>
+        let longitude = document.querySelector(".longitude");
+        let latitude = document.querySelector(".latitude");
+
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                console.log(position);
+                longitude.innerText = "经度" + position.coords.longitude.toFixed(3);
+                latitude.innerText = "纬度" + position.coords.latitude.toFixed(3);
+            }, function (error) {
+                console.log(调用失败, error);
+            }, {
+                enableHighAcuracy: true,
+                timeout: 1000,
+                maximumAge: 2000
+            })
+        } else {
+            console.log(地理位置不可用);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var Phone = function (make, type, color, power) {
+            this.make = make;
+            this.type = type;
+            this.color = color;
+            this.power = power;
+        }
+        Phone.prototype.charge = function () {
+            if (this.power === 100) {
+                console.log("电量已满无需充电");
+            } else {
+                console.log("手机电量充电至100");
+            }
+        };
+        Phone.prototype.use = function () {
+            if (this.power === 0) {
+                console.log("手机需要充电暂时无法使用");
+            } else {
+                this.power--;
+                console.log(this.power);
+            }
+        }
+
+        var mobile1 = new Phone("荣耀", "play 4", "黑色", 100);
+        var mobile2 = new Phone("荣耀", "play 4", "黑色", 80);
+        var mobile3 = new Phone("荣耀", "play 4", "黑色", 0);
+        // console.log(mobile.power);
+        mobile1.charge();
+        mobile1.use();
+        mobile2.charge();
+        mobile2.use();
+        mobile3.charge();
+        mobile3.use();
+
+    </script>
+</body>
+
+</html>

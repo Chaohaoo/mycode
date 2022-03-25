@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   
+    <!-- <ul>
+      <li>苹果</li>
+      <li>香蕉</li>
+      <li>葡萄</li>
+    </ul> -->
+
+    <!-- <button onclick="fn1()" onmouseover="fn2()" onmouseout="fn3()">按钮</button>
+    <br>
+    <img onclick="alert('我是小乔')" src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/106/106.jpg" alt="小乔">
+    <div id="myDiv">div的内容</div>
+    <input type="text" /> -->
+
+   <!--  <div><strong>div标签里面span标签里面内容</strong></div>
+
+    <button>获取div标签内容innerHTML</button>
+    <button>设置div标签内容innerHTML</button>
+    <br/>
+    <br/>
+    <button>获取div标签内容innerText</button>
+    <button>设置div标签内容innerText</button> -->
+
+    <!-- <a id="myLink" title="这是一个超链接" href="https://www.baidu.com" target="_blank">百度</a>
+    <hr/>
+
+    <button>获取自带属性</button>
+    <button>设置自带属性</button> -->
+
+
+    <!-- <p>
+        用户名: <input type="text" value="zhangsan" name="username"/>
+    </p>
+
+    <p>
+        性别:
+        <input type="radio" name="sex"/>男
+    </p>
+
+    <p>
+        省份:
+        <select class="province">
+            <option>广东省</option>
+            <option selected="selected">湖南省</option>
+            <option>湖北省</option>
+        </select>
+    </p>
+
+    <p>
+        <input type="text"/>
+        <button class="captcha" onclick="alert('你好')">获取验证码</button>
+    </p>
+
+    <div class="btn_box">
+        <button>获取表单元素的属性</button>
+        <button>设置表单元素的属性</button>
+    </div> -->
+    <script>
+        /* var a = document.getElementsByTagName("li");
+        console.log(a[0]);
+        console.log(document.querySelectorAll('li')[0]);
+        console.log(document.getElementsByTagName("li")[a.length -1]);
+        console.log(document.querySelectorAll('li')[a.length -1]); */
+
+
+        /* function fn1(){
+            console.log('fn1函数触发了');
+        }
+        function fn2(){
+            console.log('fn2函数触发了');
+        }
+        function fn3(){
+            console.log('fn3函数触发了');
+        }
+
+        var myDiv = document.getElementById('myDiv');
+        console.log(myDiv);
+        myDiv.onclick = function(){
+            console.log('你点击了div');
+        }
+        
+        var lis = document.getElementsByTagName('li');
+        for(var i = 0; i < lis.length; i++){
+            lis[i].onclick = function(){
+                console.log('你点击了li');
+            }
+        }
+
+        var inp = document.querySelector("input");
+        console.log(inp);
+        inp.onfocus = function(){
+            console.log("获取焦点了~~~~");
+        }
+        inp.onblur = function(){
+            console.log("获取焦点了~~~~");
+        } */
+
+
+        // js可以操作元素的标签内容
+        // dom对象.innerHTML       获取标签的内容
+        // dom对象.innerHTML = 值  设置标签的内容
+
+        // dom对象.innerText       获取标签的内容
+        // dom对象.innerText = 值  设置标签的内容
+           
+        /* var btns = document.querySelectorAll("button");
+        var objDiv = document.querySelector("div");
+        btns[0].onclick = function(){
+            console.log( objDiv.innerHTML );
+        };
+        btns[1].onclick = function(){
+            objDiv.innerHTML = "<h1>我是标题标签</h1>"
+        };
+        btns[2].onclick = function(){
+            console.log(objDiv.innerText);
+        };
+        btns[3].onclick = function(){
+            objDiv.innerText = "<h1>我是标题标签</h1>";
+        }; */
+        
+
+        /* var objA = document.querySelector('a');
+        var btns = document.querySelectorAll('button');
+        btns[0].onclick = function (){
+            console.log(objA.href);
+            console.log(objA.id);
+            console.log(objA.title);
+            console.log(objA.target);
+        };
+        btns[1].onclick = function (){
+            objA.innerText = '京东';
+            objA.href = 'https://www.jd.com';
+            objA.target = '_self';
+        }; */
+
+
+
+        /* var box_btns  = document.querySelectorAll('.btn_box button');
+        var username = document.getElementsByName('username')[0];
+        var sex = document.getElementsByName('sex')[0];
+        var secondOption = document.querySelector(".province option:nth-child(2)");
+        var captcha = document.getElementsByClassName('captcha')[0];
+
+        box_btns [0].onclick = function(){
+            console.log(username.type);
+            console.log( username.value );
+            console.log(sex.checked);
+            console.log(secondOption.selected);
+            console.log(captcha.disabled);
+        }
+        box_btns [1].onclick = function(){
+            username.type = "password";
+            sex.checked = true;
+            secondOption.selected = false;
+            captcha.disabled = true;
+        } */
+    </script>
+</body>
+
+</html>

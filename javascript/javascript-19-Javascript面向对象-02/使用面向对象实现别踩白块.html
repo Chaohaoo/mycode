@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        input {
+            margin: 50px 100px 20px;
+        }
+
+        .big {
+            width: 400px;
+            height: 400px;
+            margin: 0 100px;
+            border: 1px solid skyblue;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .small {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: -200px;
+        }
+
+        .small .block {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .small .block div {
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            float: left;
+        }
+
+        .small .block .active {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="0">
+    <div class="big">
+        <div class="small">
+            <div class="block">
+                <div class="active"></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="block">
+                <div></div>
+                <div class="active"></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="block">
+                <div></div>
+                <div></div>
+                <div class="active"></div>
+                <div></div>
+            </div>
+            <div class="block">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="active"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function $(cssSelector) {
+            var dom = document.querySelectorAll(cssSelector);
+            if (dom.length === 0) {
+                return null;
+            }
+            if (dom.length === 1) {
+                return dom[0];
+            }
+            return dom;
+        }
+
+        var objInput = $("input");
+        var objSmall = $(".small");
+
+        var flag = true;
+
+        var speed = 1;
+        //分数
+        var sum = 0;
+
+        var timer = setInterval(function () {
+            objSmall.style.top = objSmall.offsetTop + speed + "px";
+
+            if (objSmall.offsetTop >= 0) {
+                if (objSmall.children.length >= 5) {
+                    objSmall.removeChild(objSmall.lastElementChild);
+                }
+
+                var lastBlock = objSmall.lastElementChild;
+                var lastBlockSon = lastBlock.children;
+                var str = '';
+
+                for (var i = 0; i < lastBlockSon.length; i++) {
+                    if (lastBlockSon[i].className == "active") {
+                        str = "active";
+                    }
+                }
+                if (str == "active") {
+                    alert("漏了一个黑块,游戏结束");
+                    clearInterval(timer);
+                    flag = false;
+                }
+
+
+                var newBlock = document.createElement("div");
+                newBlock.className = "block";
+
+                var random = Math.floor(Math.random() * 4 + 1);
+
+                for (var i = 1; i < 5; i++) {
+                    var newDiv = document.createElement("div");
+                    if (random === i) {
+                        newDiv.className = "active";
+                    }
+                    newBlock.appendChild(newDiv);
+                }
+                objSmall.insertBefore(newBlock, objSmall.children[0]);
+                objSmall.style.top = "-100px";
+            }
+
+        }, 10);
+
+        objSmall.onclick = function (e) {
+            if (flag) {
+                if (e.target.className === "active") {
+                    e.target.removeAttribute("class");
+                    sum++;
+                    objInput.value = sum;
+                    if (sum % 5 === 0) {
+                        speed += 0.5;
+                    }
+                } else {
+                    alert("点击白块,游戏结束");
+                    clearInterval(timer);
+                    flag = false;
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

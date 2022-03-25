@@ -1,0 +1,175 @@
+// 英雄列表开始
+.herolist{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background: url(../images/ny_con_bg.jpg) no-repeat center top #f8fafb;
+	// margin-top: 28px;
+
+    .herolist-title{
+        padding-left: 28px;
+        background:url(../images/icon_hero.png) no-repeat left center;
+
+        h2{
+            font-weight: bold;
+            color:#323235;
+        }
+    }
+
+    .herolist-nav{
+        margin-top: 22px;
+
+        ul li{
+            float: left;
+            font-size:16px;
+            height: 30px;
+            line-height: 30px;
+            width: 400px;
+            text-align: center;
+            border-bottom: 3px solid #d4d4d4;
+
+            a{
+                display: block;
+                color:#4b4b4b;
+            }
+
+            &.active{
+                border-bottom-color:#3589dd;
+                border-radius: 0 0 3px 3px;
+
+                a{
+                    font-weight: bold;
+                    color: #3589dd;
+                }
+            }
+        }
+    }
+
+    .herolist-box{
+        padding:35px 28px;
+        border: 2px solid #e8e8e8;
+        border-top: 0;
+
+        .herolist-types{
+            margin-top: 35px;
+            margin-bottom: 40px;
+            background: #efefef;
+            border-radius: 5px;
+            height: 106px;
+            position: relative;
+
+            .types-left{
+                float: left;
+                width: 80px;
+                height: 106px;
+                font-size: 16px;
+                background: #2c88e2;
+                color:#fff;
+                border-radius: 5px 0 0 5px;
+                text-align: center;
+
+                li{
+                    height: 53px;
+                    line-height: 53px;
+                }
+            }
+
+            .types-name{
+                float: left;
+                height: 53px;
+                line-height: 53px;
+                width: 784px;
+
+                li{
+                    float: left;
+                    width: 90px;
+                    padding-left: 15px;
+                    color:#686869;
+                    cursor: pointer;
+                    user-select: none;
+
+                    span{
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                        border:1px solid #b4b4b4;
+                        vertical-align: sub;
+                        margin-right: 7px;
+                        position: relative;
+                    }
+
+                    &.active span i{
+                        width: 12px;
+                        height: 12px;
+                        display: inline-block;
+                        background-color: #358ADD;
+                        position: absolute;
+                        border-radius: 50%;
+                        left: 50%;
+                        top: 50%;
+                        margin-top: -6px;
+                        margin-left: -6px;
+                    }
+                }
+            }
+
+            .herosearch{
+                width: 240px;
+                height: 42px;
+                position: absolute;
+                right: 32px;
+                top: 51px;
+                border:1px solid #d2d2d2;
+
+                input{
+                    width: 186px;
+                    height: 22px;
+                    line-height: 22px;
+                    background: transparent;
+                    border-right:1px solid #d5d5d5;
+                    margin-top: 10px;
+                    padding-left: 11px;
+                    color:#7f7f80;
+                    font-size: 12px;
+                    float: left;
+                }
+
+                a{
+                    width: 22px;
+                    height: 22px;
+                    float: left;
+                    margin-top: 10px;
+                    padding-left: 14px;
+                    background: url(../images/vl_search_icon.png) no-repeat 14px center;
+                }
+            }
+        }
+
+        .herolist-content{
+            ul li {
+                float: left;
+                margin-bottom: 35px;
+                margin-right: 30px;
+                width: 87px;
+                text-align: center;
+
+                &:nth-child(10n){
+                    margin-right: 0;
+                }
+
+                a{
+                    display: block;
+
+                    img{
+                        width: 83px;
+                        height: 83px;
+                        border: 2px solid #258DF2;
+                        border-radius: 10px 0 10px 0;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+// 英雄列表结束

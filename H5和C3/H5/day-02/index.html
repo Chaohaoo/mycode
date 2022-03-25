@@ -1,0 +1,35 @@
+ctx.moveTo(x,y) 将一个新的子路径的起始点移动到(x，y)坐标。
+ctx.lineTo(x,y) 使用直线连接子路径的最后的点到x,y坐标。
+ctx.stroke() 使用当前的样式描边子路径。
+ctx.strokeStyle 图形边线的颜色和样式。 默认 #000 (黑色).
+ctx.lineWidth 线的宽度。默认 1.0
+ctx.beginPath() 清空子路径列表开始一个新的路径。当你想创建一个新的路径时，调用此方法。
+ctx.closePath() 使笔点返回到当前子路径的起始点。它尝试从当前点到起始点绘制一条直线。如果图形已经是封闭的或者只有一个点，那么此方法不会做任何操作。
+ctx.fill() 使用当前的样式填充子路径。
+ctx.fillStyle 图形内部的颜色和样式。 默认 #000 (黑色).
+
+ctx.rect(x, y, width, height) 创建一个矩形路径，矩形的起点位置是 (x, y) ，尺寸为 width 和 height。
+ctx.strokeRect(x, y, width, height) 在 canvas 中，使用当前的笔触样式，描绘一个起点在 (x, y) 、宽度为 w 、高度为 h 的矩形。
+ctx.fillRect(x, y, width, height) 绘制填充矩形，矩形的起点在 (x, y) 位置，矩形的尺寸是 width 和 height 。
+ctx.clearRect(x, y, width, height)设置指定矩形区域内（以 点 (x, y) 为起点，范围是(width, height) ）所有像素变成透明，并擦除之前绘制的所有内容。
+
+ctx.globalAlpha 这个属性影响到 canvas 里所有图形的透明度 默认1.0
+ctx.lineCap 的值决定了线段端点显示的样子，它可以为下面的三种的其中之一：butt，round 和 square。默认是 butt。
+ctx.lineJoin 设定线条与线条间接合处的样式。它可以是这三种之一：round, bevel 和 miter。默认是 miter。
+ctx.miterLimit 限制当两条线相交时交接处最大长度； 斜接面限制比例。默认 10。
+
+ctx.setLineDash( segments )方法在填充线时使用虚线模式。 它使用一组值来指定描述模式的线和间隙的交替长度。
+一个Array数组。一组描述交替绘制线段和间距（坐标空间单位）长度的数字。 如果数组元素的数量是奇数， 数组的元素会被复制并重复。例如， [5, 15, 25] 会变成 [5, 15, 25, 5, 15, 25]。
+
+ctx.getLineDash() 获取当前线段样式的方法
+ctx.lineDashOffset = 数值 设置虚线偏移量的属性,默认0 ,0
+
+ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise) 是 Canvas 2D API 绘制圆弧路径的方法。 圆弧路径的圆心在 (x, y) 位置，半径为 r
+，根据anticlockwise （默认为顺时针）指定的方向从 startAngle 开始绘制，到 endAngle 结束。
+ctx.arc(圆心x坐标, 圆心y坐标, radius半径, startAngle开始弧度, endAngle结束弧度, anticlockwise可选参数,默认falses是顺时针绘制圆弧; 如果为true,表示逆时针绘制圆弧)
+
+ctx.arcTo()
+根据控制点和半径绘制圆弧路径，使用当前的描点(前一个moveTo或lineTo等函数的止点)。根据当前描点与给定的控制点1连接的直线，和控制点1与控制点2连接的直线，作为使用指定半径的圆的切线，画出两条切线之间的弧线路径。
+
+二次贝塞尔曲线: quadraticCurveTo(cp1x, cp1y, x, y) 绘制二次贝塞尔曲线，cp1x,cp1y为一个控制点，x,y为结束点。
+三次贝塞尔曲线: bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) 绘制三次贝塞尔曲线，cp1x,cp1y为控制点一，cp2x,cp2y为控制点二，x,y为结束点。

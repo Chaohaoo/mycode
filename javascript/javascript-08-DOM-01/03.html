@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one{
+            border: 1px solid red;
+            display: inline-block;
+            text-align: center;
+            color: red;
+            margin-left: 50px;
+            position: relative;
+            
+        }
+        .one .two{
+            width: 20px;
+            border: 1px solid red;
+            position: absolute;
+            left: -23px;
+            top: 0;
+
+        }
+        .one img{
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="one">
+        <div class="two">X</div>
+        <p>淘宝二维码</p>
+        <img src="./images/tao.png" alt="">
+    </div>
+    
+
+    <script>
+        var one = document.querySelector('.one');
+        var two = document.querySelector('.two');
+        var imgs = document.querySelector('img');
+        two.onclick = function(){
+            one.style.display = "none";
+        };
+        
+    </script>
+</body>
+</html>

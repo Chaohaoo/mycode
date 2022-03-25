@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>小猪佩奇和哆啦A梦</h1>
+    <button>小猪佩奇</button>
+    <button>哆啦A梦</button>
+    <br>
+    <img src="./images/xzpq.jpg" title="小猪佩奇">
+    <!-- <img src="./images/dlam.jpg" title="哆啦A梦"> -->
+    <script>
+        var btns = document.querySelectorAll('button');
+
+        var imgs = document.querySelector('img');
+        
+        btns[0].onclick = function(){
+            imgs.src = "./images/xzpq.jpg";
+            imgs.title = "小猪佩奇";
+        };
+        
+        btns[1].onclick = function(){
+            imgs.src = "./images/dlam.jpg";
+            imgs.title = "哆啦A梦";
+        };
+
+    </script>
+</body>
+</html>

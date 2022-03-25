@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .demo{
+            width: 500px;
+            height: 500px;
+            background: orange;
+        }
+        .demo .box{
+            width:300px;
+            height: 300px;
+            background: skyblue;
+        }
+        .demo .box .erweima{
+            background: green;
+        } */
+
+        /* p{
+            background: skyblue;
+        }
+        #myDiv{
+            background: orange;
+        }
+        span{
+            background: green;
+        } */
+    </style>
+</head>
+<body>
+
+    <!-- <table border="1">  
+        <tr>  
+            <td id="john" name="myname">John</td>
+            <td>Doe</td>  
+            <td id="jack">Jack</td>  
+        </tr>  
+    </table> -->
+
+    <!-- <div class="demo">
+        <div class="box">
+            <span class="erweima">二维码</span>
+        </div>
+    </div>
+
+    <ul>
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+     </ul> -->
+
+
+     <!-- <p>我是p</p>
+     <div id="myDiv">我是div</div>
+     <span>我是span</span> -->
+
+
+    <!--  <ul>
+        <li>苹果</li>
+        <li>香蕉</li>
+        <li>西瓜</li>
+        <li>草莓</li>
+    </ul>
+
+    <button>添加节点appendChild</button>
+    <button>添加节点insertBefore</button>
+    <button>删除节点removeChild</button>
+    <button>删除节点remove</button> -->
+
+    <!-- <ul>
+        <li>水果
+            <ul>
+                <li>苹果</li>
+                <li>香蕉</li>
+                <li>葡萄</li>
+            </ul>
+        </li>
+
+        <li>手机</li>
+        <li>电脑</li>
+    </ul>
+
+    <button>cloneNode()浅拷贝</button>
+    <button>cloneNode(true)深拷贝</button> -->
+    
+    <script>
+        /* // 元素节点
+        var john = document.getElementById("john");
+        console.log(john);
+        console.log(john.nodeType);
+        console.log(john.nodeName);
+        console.log(john.nodeValue);
+
+        //属性节点
+        var attrNode  = john.getAttributeNode("name");
+        console.log(attrNode)
+        console.log(attrNode.nodeType);
+        console.log(attrNode.nodeName);
+        console.log(attrNode.nodeValue);
+
+        // 文本节点
+        var textNode = john.firstChild;
+        console.log(textNode);
+        console.log(textNode.nodeType);
+        console.log(textNode.nodeName);
+        console.log(textNode.nodeValue); */
+
+
+        /* var erweima = document.querySelector(".erweima");
+        console.log(erweima);
+        console.log(erweima.parentNode);
+        console.log(erweima.parentNode.parentNode);
+        console.log('');
+        var objUi = document.querySelector("ul");
+        console.log(objUi);
+        console.log(objUi.childNodes);
+        console.log(objUi.children);
+        console.log(objUi.children.length);
+        console.log(objUi.children[0]);
+        console.log(objUi.children[objUi.children.length -1]);
+        console.log('');
+        console.log(objUi.firstElementChild);
+        console.log(objUi.lastElementChild); */
+
+
+        /* var myDiv = document.getElementById("myDiv");
+        console.log(myDiv);
+        console.log( myDiv.nextSibling ); //下一个兄弟节点
+        console.log( myDiv.nextSibling.nextSibling );//下一个兄弟节点
+        console.log( myDiv.previousSibling );//上一个兄弟节点
+        console.log( myDiv.previousSibling.previousSibling );//上一个兄弟节点
+        console.log( myDiv.nextElementSibling ); //下一个兄弟元素节点
+        console.log( myDiv.previousElementSibling );//上一个兄弟元素节点 */
+
+        /* var btns = document.querySelectorAll("button");
+        var objUi = document.querySelector("ul");
+        btns[0].onclick = function(){
+            // 创建一个新的li标签
+            var newli = document.createElement("li");
+            // 给新的li标签设置内容
+            newli.innerText = "葡萄";
+            // 把新的li标签添加到ul中 
+            objUi.appendChild( newli );
+        }
+        btns[1].onclick = function(){
+            // 创建一个新的li标签
+            var newli = document.createElement("li");
+            // 给新的li标签设置内容
+            newli.innerText = "冬瓜";
+            // 把新的li标签添加到ul中 
+            objUi.insertBefore( newli,objUi.firstElementChild );
+        }
+        btns[2].onclick = function(){
+           //父级删除
+           objUi.removeChild(objUi.firstElementChild);
+        }
+        btns[3].onclick = function(){
+           //自己删除自己
+           objUi.lastElementChild.remove();
+        } */
+
+        /* var btns = document.querySelectorAll("button");
+        var objUi = document.querySelector("ul");
+        btns[0].onclick = function (){
+            var kelong = objUi.firstElementChild.cloneNode();
+            console.log(kelong);
+            objUi.appendChild(kelong);
+        }
+        btns[1].onclick = function (){
+            var kelong = objUi.firstElementChild.cloneNode(truettttt);
+            console.log(kelong);
+            objUi.appendChild(kelong);
+        } */
+    </script>
+</body>
+</html>

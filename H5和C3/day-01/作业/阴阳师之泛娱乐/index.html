@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .yys {
+            width: 1160px;
+            margin: 100px auto;
+            display: flex;
+            justify-content: space-evenly;
+            background: url(./images/bg.jpg) no-repeat center;
+        }
+
+        .yys .photo:hover {
+            transform: translateY(-20px);
+            transition: .5s;
+
+        }
+
+        .yys .photo .code img {
+            width: 220px;
+            height: 220px;
+        }
+
+        .yys .photo .code {
+            display: none;
+
+        }
+
+        .yys .photo:hover .code {
+            display: block;
+            animation: animat 1s forwards;
+        }
+
+        @keyframes animat {
+            from {
+                transform: translateY(0px);
+            }
+
+            to {
+                transform: translateY(-100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="yys">
+        <div class="photo">
+            <img src="./images/1.gif" alt="">
+        </div>
+        <div class="photo">
+            <img src="./images/2.jpg" alt="">
+            <div class="code">
+                <img src="./images/qrcode.jpg" alt="">
+            </div>
+        </div>
+        <div class="photo">
+            <img src="./images/3.jpg" alt="">
+        </div>
+        <div class="photo">
+            <img src="./images/4.jpg" alt="">
+        </div>
+        <div class="photo">
+            <img src="./images/5.gif" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

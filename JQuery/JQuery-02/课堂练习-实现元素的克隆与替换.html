@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>克隆元素</button>
+    <button>替换jQuery</button>
+    <br />
+    <img src="./images/javascript.png" alt="">
+    <!-- <img src="./images/jquery.png" alt=""> -->
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $("button").eq(0).click(function () {
+            $("body").append($("img").first().clone(true));
+        });
+        $("button").eq(1).click(function () {
+            $("img").replaceWith('<img src="./images/jquery.png" alt="">');
+            console.log($("img"));
+        });
+    </script>
+</body>
+
+</html>

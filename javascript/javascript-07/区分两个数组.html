@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function diffArray(a,b){
+            var newArr = [];
+            var c = a.concat(b);
+            newArr = c.filter(function isConcat(item){
+                return a.indexOf(item) == -1 || b.indexOf(item) == -1;
+            });
+            return newArr;
+        }
+        var arr1 = [1, 2, 3, 5];
+        var arr2 = [1, 2, 3, 4, 5];
+        console.log( diffArray( arr1, arr2 ) );// [4]
+        var arr3 = ["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"];
+        var arr4 = ["diorite", "andesite", "grass", "dirt", "dead shrub"];
+        console.log( diffArray( arr3, arr4 ) );// ["pink wool"]
+        var arr5 = ["andesite", "grass", "dirt", "pink wool", "dead shrub"];
+        var arr6 = ["diorite", "andesite", "grass", "dirt", "dead shrub"];
+        console.log( diffArray( arr5, arr6 ) );// ["pink wool", "diorite"]
+        var arr7 = [];
+        var arr8 = ["snuffleupagus", "cookie monster", "elmo"];
+        console.log( diffArray( arr7, arr8 ) );// ["snuffleupagus", "cookie monster", "elmo"]
+        var arr9 = ["andesite", "grass", "dirt", "dead shrub"];
+        var arr10 = ["andesite", "grass", "dirt", "dead shrub"];
+        console.log( diffArray( arr9, arr10 ) );// []
+
+    </script>
+</body>
+</html>

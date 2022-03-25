@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+
+        .music {
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .music img {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .music .img2 {
+            transition: 2s;
+        }
+
+        .music:hover .img2 {
+            transform: rotateX(180deg);
+            transform-origin: bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="music">
+        <img src="./images/musicb.jpg" class="img1">
+        <img src="./images/musict.jpg" class="img2">
+    </div>
+</body>
+
+</html>

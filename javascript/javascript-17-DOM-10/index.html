@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>用户名:<input type="text" id="uname" /></p>
+    <p>密　码:<input type="text" id="upass" /></p>
+    <br />
+    <button>设置(创建)cookie</button>
+    <button>获取(读取)cookie</button>
+    <button>修改cookie</button>
+    <button>删除cookie</button>
+
+    <script>
+        // cookie 是浏览器提供的一种可以缓存数据的机制 [http协议或者https协议]
+
+        // Cookie特点
+        // 1、需要http服务或者https服务器
+        // 2、同一个客户端软件 
+        // 3、同一个服务环境下 【路径】可以实现数据共享 
+
+        var unameInput = document.getElementById("uname");
+        var upassInput = document.getElementById("upass");
+
+        var btns = document.querySelectorAll("button");
+        btns[0].onclick = function () {
+            // 获取用户名的值
+            var unameVal = unameInput.value;
+            // 获取密码的值
+            var upassVal = upassInput.value;
+
+            // 创建cookie语法
+            // 语法1: document.cookie = "键名=键值";   不设置有效期,默认浏览器关闭以后,就失效
+            document.cookie = "myName=" + unameVal;
+            document.cookie = "myPass=" + upassVal;
+
+            // 语法2: document.cookie= "键名=键值; expires=GMT时间或者UTC时间";  设置指定的有效期时间
+            // 注意: 超过有效时间以后,会自动删除cookie
+
+            // 有效期天数
+            var exdays = 1;
+            // 得到当前时间
+            var d = new Date();
+            // 使用现在当前时间,加上指定毫秒数
+            // 日期对象.setTime() 设置时间戳
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+
+            // 日期对象.toGMTString() 把日期时间转成GMT字符串
+            var expires = "expires=" + d.toGMTString();
+            // 创建cookie
+            document.cookie = "myName=" + unameVal + "; expires=" + expires;
+        }
+
+        btns[1].onclick = function () {
+            // 获取cookie   document.cookie
+            // 注意: document.cookie 将以字符串的方式返回所有的 cookie，类型格式： cookie1=value; cookie2=value; cookie3=value;
+            console.log(document.cookie);
+        }
+
+        btns[2].onclick = function () {
+            // 修改cookie就是重新设置cookie,修改cookie的语法就是cookie的语法
+
+            // 获取用户名的值
+            var unameVal = unameInput.value;
+            document.cookie = "myName=" + unameVal;
+        }
+
+        btns[3].onclick = function () {
+            // 删除cookie只需要设置一个已经过期的时间即可
+            document.cookie = "myName=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: green;
+            text-align: center;
+            line-height: 200px;
+            font-size: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">1</div>
+
+    <script>
+        let box = document.querySelector(".box");
+        let num = 1;
+
+        function changeNum(e) {
+            num++;
+            box.innerText = num;
+        };
+
+        function throttle(func, wait) {
+            let timeout = null;
+            let that = null;
+            let argu = null;
+            let old = 0;
+
+            return function () {
+                that = this;
+                argu = arguments;
+                let now = new Date().getTime();
+
+                if (now - old >= wait) {
+                    func.apply(that, argu);
+                    old = now;
+                }
+            }
+        };
+
+        box.onmousemove = throttle(changeNum, 1000);
+    </script>
+</body>
+
+</html>
